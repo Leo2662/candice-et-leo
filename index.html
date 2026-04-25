@@ -20,6 +20,7 @@
       <li><a href="#hebergement">Hébergement</a></li>
       <li><a href="#dresscode">Dress code</a></li>
       <li><a href="#cagnotte">Cagnotte</a></li>
+      <li><a href="#album">Album</a></li>
     </ul>
   </nav>
 
@@ -188,10 +189,42 @@
   <section id="cagnotte" class="section bg-light">
     <h2>Liste de mariage</h2>
     <div class="divider small"><span></span></div>
-    <p class="section-intro">Votre présence est le plus beau des cadeaux.<br />Si vous souhaitez néanmoins participer à notre bonheur, une cagnotte sera bientôt disponible ici.</p>
-    <div class="cagnotte-placeholder">
+    <p class="section-intro">
+      Votre présence est le plus beau des cadeaux.<br />
+      Si vous souhaitez contribuer à nos projets et aventures à venir,<br />
+      une cagnotte est disponible en ligne — et une urne sera également présente le jour J.
+    </p>
+    <div class="cagnotte-box">
       <div class="cagnotte-icon">&#9825;</div>
-      <p>Cagnotte — <em>bientôt disponible</em></p>
+      <p class="cagnotte-label">Participer à la cagnotte</p>
+      <a class="btn-cagnotte" href="LIEN_CAGNOTTE" target="_blank" rel="noopener">
+        Contribuer en ligne →
+      </a>
+      <p class="cagnotte-urne">Une urne sera également présente lors de la réception.</p>
+    </div>
+  </section>
+
+  <!-- Album -->
+  <section id="album" class="section">
+    <h2>Notre album</h2>
+    <div class="divider small"><span></span></div>
+    <p class="section-intro">Quelques instants partagés, avant le plus beau.</p>
+    <div class="album-grid">
+      <div class="album-item">
+        <img src="images/photo-plage.jpg" alt="Candice et Léo à la plage" loading="lazy" />
+      </div>
+      <div class="album-item">
+        <img src="images/photo-cadix.jpg" alt="Candice et Léo à Cadix" loading="lazy" />
+      </div>
+      <div class="album-item">
+        <img src="images/photo-munich.jpg" alt="Candice et Léo à Munich" loading="lazy" />
+      </div>
+      <div class="album-item">
+        <img src="images/photo-neige.jpg" alt="Candice et Léo sous la neige" loading="lazy" />
+      </div>
+      <div class="album-item">
+        <img src="images/photo-rome.jpg" alt="Candice et Léo à Rome" loading="lazy" />
+      </div>
     </div>
   </section>
 
@@ -200,6 +233,12 @@
     <p>Candice &amp; Léo — 6 mars 2027</p>
     <p class="footer-sub">Fait avec amour &#10084;</p>
   </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Fermer">&times;</button>
+    <img id="lightbox-img" src="" alt="" />
+  </div>
 
   <script src="script.js"></script>
 </body>
