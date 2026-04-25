@@ -285,6 +285,13 @@ body {
 .map-link:hover { color: var(--bordeaux-dark); border-color: var(--bordeaux); }
 
 /* ===== Hotel ===== */
+.hotel-type {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px !important;
+}
 .hotel-card {
   max-width: 800px;
   margin: 0 auto;
@@ -316,6 +323,48 @@ body {
   margin-bottom: 16px;
 }
 .hotel-map iframe { display: block; height: 280px; }
+
+.hotel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: 28px auto 0;
+}
+.hotel-mini {
+  background: #fff;
+  border-radius: 8px;
+  padding: 24px 24px 20px;
+  box-shadow: 0 4px 20px rgba(107,26,42,0.08);
+  text-align: left;
+  border-top: 3px solid var(--bordeaux-pale);
+}
+.hotel-mini-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+.hotel-mini h3 {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--bordeaux);
+  line-height: 1.2;
+}
+.hotel-rating {
+  font-size: 0.78rem;
+  color: var(--text-light);
+  white-space: nowrap;
+  padding-top: 3px;
+}
+.hotel-mini p {
+  color: var(--text-light);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
 
 /* ===== Dress code ===== */
 .dresscode-grid {
