@@ -24,39 +24,6 @@ body {
   line-height: 1.7;
 }
 
-/* ===== Nav ===== */
-#navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 100;
-  background: rgba(107, 26, 42, 0.96);
-  backdrop-filter: blur(6px);
-  padding: 0;
-}
-#navbar ul {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  list-style: none;
-  gap: 0;
-}
-#navbar ul li a {
-  display: block;
-  padding: 18px 22px;
-  color: #f5eaec;
-  text-decoration: none;
-  font-size: 0.72rem;
-  font-weight: 400;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  transition: color 0.25s, background 0.25s;
-}
-#navbar ul li a:hover {
-  color: var(--gold);
-  background: rgba(255,255,255,0.06);
-}
-
 /* ===== Hero ===== */
 .hero {
   min-height: 100vh;
@@ -68,7 +35,7 @@ body {
     linear-gradient(160deg, rgba(107,26,42,0.82) 0%, rgba(74,15,28,0.76) 100%),
     url('images/photo-neige.jpg') center/cover no-repeat;
   color: #fff;
-  padding: 120px 24px 60px;
+  padding: 80px 24px;
 }
 .hero-inner { max-width: 680px; }
 .hero-pre {
@@ -893,7 +860,7 @@ footer p:first-child {
 
 /* Accessibilité : pas d'animation au scroll, invitation lisible d'emblée */
 @media (prefers-reduced-motion: reduce) {
-  .envelope-scene { height: auto; padding: 130px 24px 90px; }
+  .envelope-scene { height: auto; padding: 90px 24px; }
   .envelope-sticky { position: static; height: auto; overflow: visible; }
   .envelope-stage { width: min(92vw, 420px); height: auto; margin: 0 auto; }
   .envelope { position: static; animation: none; }
@@ -936,7 +903,6 @@ footer p:first-child {
   .cagnotte-box { padding: 36px 28px; }
 }
 @media (max-width: 640px) {
-  #navbar ul li a { padding: 14px 12px; font-size: 0.65rem; }
   .hotel-card { grid-template-columns: 1fr; }
   .hotel-map iframe { height: 220px; }
   .tl-item:not(:last-child)::after { display: none; }
@@ -947,7 +913,6 @@ footer p:first-child {
   .env-hint { top: calc(100% + 26px); }
 }
 @media (max-height: 560px) {
-  .envelope-sticky { padding-top: 88px; }   /* dégage la navigation sur deux lignes */
   .envelope-stage { --w: clamp(200px, min(52vw, 50vh), 320px); }
   .env-eyebrow { bottom: calc(100% + 18px); }
   .env-hint { top: calc(100% + 18px); }

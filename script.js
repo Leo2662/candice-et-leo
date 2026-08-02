@@ -116,13 +116,3 @@
   window.addEventListener('resize', onScroll);
   render();
 })();
-
-// Navbar scroll shadow
-window.addEventListener('scroll', function () {
-  const nav = document.getElementById('navbar');
-  if (window.scrollY > 40) {
-    nav.style.boxShadow = '0 2px 20px rgba(74,15,28,0.35)';
-  } else {
-    nav.style.boxShadow = 'none';
-  }
-});
