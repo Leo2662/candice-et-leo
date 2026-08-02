@@ -1,18 +1,34 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-motion="full">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Candice &amp; Léo — 6 mars 2027</title>
+  <meta name="description" content="Candice et Léo se marient le samedi 6 mars 2027. Programme, lieux, hébergement et liste de mariage." />
+  <meta name="theme-color" content="#6b1a2a" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="film.css" />
+  <link rel="preload" as="image" href="images/couple.webp" imagesrcset="images/couple@sm.webp 320w, images/couple.webp 548w" imagesizes="(max-width: 720px) 46vw, 30vw" />
 </head>
 <body>
 
-  <!-- Invitation — enveloppe scellée qui s'ouvre au défilement -->
-  <section id="invitation" class="envelope-scene" aria-label="Notre invitation">
+  <a class="skip-link" href="#programme">Aller directement aux informations pratiques</a>
+
+  <!-- Atmosphère : ciel unique qui traverse la journée, du petit matin à la nuit -->
+  <div class="film-atmosphere" aria-hidden="true"></div>
+  <canvas class="film-snow" id="film-snow" aria-hidden="true"></canvas>
+
+  <!-- Barre de progression du film -->
+  <div class="film-progress" aria-hidden="true"><i></i></div>
+
+
+  <!-- ============================================================
+       ACTE I — L'invitation : une enveloppe scellée qui s'ouvre
+       ============================================================ -->
+  <section id="invitation" class="act act-envelope envelope-scene" data-scene="envelope" aria-label="Notre invitation">
     <div class="envelope-sticky">
       <div class="envelope-stage">
 
@@ -57,276 +73,676 @@
     </div>
   </section>
 
-  <!-- Hero -->
-  <section id="accueil" class="hero">
-    <div class="hero-inner">
-      <p class="hero-pre">Le grand jour approche</p>
-      <h1>Candice <span class="amp">&amp;</span> Léo</h1>
-      <p class="hero-date">Le samedi 6 mars 2027</p>
-      <div class="divider"><span></span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg><span></span></div>
-      <!-- Compte à rebours -->
-      <div id="countdown">
-        <div class="cd-block"><span id="cd-days">--</span><em>jours</em></div>
-        <div class="cd-block"><span id="cd-hours">--</span><em>heures</em></div>
-        <div class="cd-block"><span id="cd-minutes">--</span><em>minutes</em></div>
-        <div class="cd-block"><span id="cd-seconds">--</span><em>secondes</em></div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Programme -->
-  <section id="programme" class="section bg-light">
-    <h2>Programme de la journée</h2>
-    <div class="divider small"><span></span></div>
-    <div class="timeline">
+  <!-- ============================================================
+       ACTE II — Le kiosque : les mariés sous la neige
+       ============================================================ -->
+  <section id="accueil" class="act act-kiosque" data-scene="kiosque" aria-label="Candice et Léo, le 6 mars 2027">
+    <div class="act-bg">
+      <div class="scene scene-kiosque">
 
-      <div class="tl-item">
-        <div class="tl-icon">&#9788;</div>
-        <div class="tl-content">
-          <h3>14h00 — Cérémonie religieuse</h3>
-          <p>Église de Mouvaux<br />10 Pl. du Général de Gaulle, 59420 Mouvaux</p>
+        <!-- Lointain : ligne d'arbres pâle -->
+        <div class="lyr lyr-far" aria-hidden="true">
+          <svg viewBox="0 0 1200 220" preserveAspectRatio="xMidYMax slice">
+            <g class="fir fir-far">
+              <path d="M40 220 L70 120 L100 220Z M70 150 L70 120 M110 220 L145 95 L180 220Z M200 220 L226 135 L252 220Z
+                       M280 220 L318 100 L356 220Z M390 220 L414 140 L438 220Z M470 220 L508 105 L546 220Z
+                       M580 220 L606 138 L632 220Z M660 220 L698 98 L736 220Z M770 220 L794 142 L818 220Z
+                       M850 220 L888 108 L926 220Z M960 220 L986 136 L1012 220Z M1050 220 L1088 102 L1126 220Z" />
+            </g>
+          </svg>
         </div>
-      </div>
 
-      <div class="tl-item">
-        <div class="tl-icon">&#10047;</div>
-        <div class="tl-content">
-          <h3>17h00 — Vin d'honneur</h3>
-          <p>Dans l'orangerie du Château du Biez<br />Rue de Lannoy 145, 7740 Pecq, Belgique</p>
+        <!-- Plan intermédiaire : arbres nus givrés -->
+        <div class="lyr lyr-mid" aria-hidden="true">
+          <svg viewBox="0 0 1200 300" preserveAspectRatio="xMidYMax slice">
+            <g class="bare-tree">
+              <path d="M150 300 L150 160 M150 200 L118 168 M150 220 L182 190 M150 178 L128 150 M150 190 L176 160"/>
+              <path d="M1040 300 L1040 150 M1040 195 L1006 160 M1040 215 L1074 184 M1040 170 L1016 142 M1040 182 L1066 152"/>
+            </g>
+            <g class="fir fir-mid">
+              <path d="M250 300 L296 140 L342 300Z M900 300 L946 148 L992 300Z M60 300 L98 170 L136 300Z" />
+            </g>
+          </svg>
         </div>
-      </div>
 
-      <div class="tl-item">
-        <div class="tl-icon">&#9835;</div>
-        <div class="tl-content">
-          <h3>Soirée — Réception &amp; dîner</h3>
-          <p>Château du Biez<br />Rue de Lannoy 145, 7740 Pecq, Belgique</p>
+        <!-- Le kiosque à musique -->
+        <div class="k-stage" aria-hidden="true">
+          <svg viewBox="0 0 400 320" preserveAspectRatio="xMidYMax meet" class="kiosque">
+            <!-- intérieur, vu entre les colonnes -->
+            <path class="k-inner" d="M58 132 H342 V240 H58 Z" />
+            <!-- halo de la guirlande sur le fond -->
+            <ellipse class="k-glow" cx="200" cy="176" rx="122" ry="52" />
+
+            <!-- toit en cloche, 8 pans (apex adouci : trop pointu, il faisait chapiteau) -->
+            <path class="k-roof" d="M200 42 C224 64 286 94 348 126 L52 126 C114 94 176 64 200 42 Z" />
+            <g class="k-roof-lines">
+              <path d="M200 46 L58 126 M200 46 L130 126 M200 46 L200 126 M200 46 L270 126 M200 46 L342 126"/>
+            </g>
+            <!-- fine crête de neige sur le faîte -->
+            <path class="k-snow" d="M200 44 C208 52 219 62 231 72
+                                     Q223 77 216 73 Q208 79 200 74 Q192 79 184 73 Q177 77 169 72
+                                     C181 62 192 52 200 44 Z" />
+            <!-- épi de faîtage -->
+            <g class="k-finial">
+              <path d="M200 42 L200 28" /><circle cx="200" cy="25" r="4" />
+            </g>
+
+            <!-- corniche + neige sur l'avancée de toit -->
+            <path class="k-cornice" d="M46 126 H354 V139 H46 Z" />
+            <path class="k-snow" d="M46 126 H354 V133 Q306 128 264 133 Q200 128 136 133 Q94 128 46 133 Z" />
+
+            <!-- lambrequin : bandeau + festons -->
+            <path class="k-valance" d="M56 139 H344 V149 H56 Z" />
+            <g class="k-valance">
+              <circle cx="68"  cy="149" r="6" /><circle cx="92"  cy="149" r="6" />
+              <circle cx="116" cy="149" r="6" /><circle cx="140" cy="149" r="6" />
+              <circle cx="164" cy="149" r="6" /><circle cx="188" cy="149" r="6" />
+              <circle cx="212" cy="149" r="6" /><circle cx="236" cy="149" r="6" />
+              <circle cx="260" cy="149" r="6" /><circle cx="284" cy="149" r="6" />
+              <circle cx="308" cy="149" r="6" /><circle cx="332" cy="149" r="6" />
+            </g>
+
+            <!-- guirlande lumineuse tendue sous le lambrequin -->
+            <path class="k-garland" d="M66 156 Q200 190 334 156" />
+            <g class="k-bulbs">
+              <circle cx="100" cy="168" r="3.2"/><circle cx="141" cy="177" r="3.2"/>
+              <circle cx="182" cy="182" r="3.2"/><circle cx="223" cy="182" r="3.2"/>
+              <circle cx="264" cy="176" r="3.2"/><circle cx="305" cy="166" r="3.2"/>
+            </g>
+
+            <!-- colonnes -->
+            <g class="k-col">
+              <rect x="56"  y="138" width="10" height="104" rx="2"/>
+              <rect x="122" y="138" width="9"  height="104" rx="2"/>
+              <rect x="195" y="138" width="9"  height="104" rx="2"/>
+              <rect x="268" y="138" width="9"  height="104" rx="2"/>
+              <rect x="334" y="138" width="10" height="104" rx="2"/>
+            </g>
+
+            <!-- garde-corps ajouré -->
+            <g class="k-rail">
+              <rect x="66"  y="196" width="56" height="6" rx="2"/>
+              <rect x="131" y="196" width="64" height="6" rx="2"/>
+              <rect x="204" y="196" width="64" height="6" rx="2"/>
+              <rect x="277" y="196" width="57" height="6" rx="2"/>
+              <rect x="66"  y="236" width="268" height="5" rx="2"/>
+            </g>
+            <g class="k-baluster">
+              <path d="M74 202 v34 M84 202 v34 M94 202 v34 M104 202 v34 M114 202 v34
+                       M139 202 v34 M149 202 v34 M159 202 v34 M169 202 v34 M179 202 v34 M189 202 v34
+                       M212 202 v34 M222 202 v34 M232 202 v34 M242 202 v34 M252 202 v34 M262 202 v34
+                       M285 202 v34 M295 202 v34 M305 202 v34 M315 202 v34 M325 202 v34" />
+            </g>
+            <path class="k-snow" d="M64 196 h272 v4 q-40 -3 -68 0 q-40 -3 -68 0 q-40 -3 -68 0 q-40 -3 -68 0 z" />
+
+            <!-- plancher + soubassement -->
+            <path class="k-floor" d="M44 242 H356 L348 258 H52 Z" />
+            <!-- marches -->
+            <path class="k-step" d="M150 258 H250 V270 H150 Z" />
+            <path class="k-step" d="M138 270 H262 V282 H138 Z" />
+            <path class="k-step" d="M126 282 H274 V294 H126 Z" />
+            <path class="k-snow" d="M150 258 H250 V262 Q200 259 150 262 Z M138 270 H262 V274 Q200 271 138 274 Z
+                                     M126 282 H274 V286 Q200 283 126 286 Z" />
+          </svg>
         </div>
-      </div>
 
-    </div>
-  </section>
-
-  <!-- Lieux -->
-  <section id="lieux" class="section">
-    <h2>Les lieux</h2>
-    <div class="divider small"><span></span></div>
-
-    <div class="venues">
-
-      <div class="venue-card">
-        <h3>Cérémonie</h3>
-        <h4>Église de Mouvaux</h4>
-        <p>10 Pl. du Général de Gaulle<br />59420 Mouvaux, France</p>
-        <div class="map-wrapper">
-          <iframe
-            title="Église de Mouvaux"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2524.3!2d3.1302!3d50.7024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c32f1e1a2b3c5d%3A0x0!2s10+Pl.+du+G%C3%A9n%C3%A9ral+de+Gaulle%2C+59420+Mouvaux!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr"
-            width="100%"
-            height="300"
-            style="border:0;"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
+        <!-- Les mariés -->
+        <div class="lyr lyr-couple">
+          <picture>
+            <source type="image/webp" srcset="images/couple@sm.webp 320w, images/couple.webp 548w"
+                    sizes="(max-width: 720px) 46vw, 30vw" />
+            <img src="images/couple.png" alt="Candice et Léo en tenue de mariage" class="couple-img"
+                 width="548" height="1200" fetchpriority="high" />
+          </picture>
+          <div class="couple-shadow" aria-hidden="true"></div>
         </div>
-        <a class="map-link" href="https://maps.google.com/?q=10+Pl.+du+Général+de+Gaulle,+59420+Mouvaux" target="_blank" rel="noopener">Ouvrir dans Google Maps →</a>
-      </div>
 
-      <div class="venue-card">
-        <h3>Réception</h3>
-        <h4>Château du Biez</h4>
-        <p>Rue de Lannoy 145<br />7740 Pecq, Belgique</p>
-        <div class="map-wrapper">
-          <iframe
-            title="Château du Biez"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2527.0!2d3.2440!3d50.6780!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c32e5a1b2c3d4e%3A0x0!2sRue+de+Lannoy+145%2C+7740+Pecq%2C+Belgique!5e0!3m2!1sfr!2sfr!4v1700000000001!5m2!1sfr!2sfr"
-            width="100%"
-            height="300"
-            style="border:0;"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
+        <!-- Congères au premier plan -->
+        <div class="lyr lyr-drift" aria-hidden="true">
+          <svg viewBox="0 0 1200 200" preserveAspectRatio="xMidYMax slice">
+            <path class="drift-b" d="M0 96 Q150 58 320 82 Q520 110 700 74 Q900 38 1200 84 V200 H0 Z" />
+            <path class="drift-a" d="M0 140 Q200 104 400 132 Q640 166 860 126 Q1040 94 1200 130 V200 H0 Z" />
+          </svg>
         </div>
-        <a class="map-link" href="https://maps.google.com/?q=Rue+de+Lannoy+145,+7740+Pecq,+Belgique" target="_blank" rel="noopener">Ouvrir dans Google Maps →</a>
-      </div>
 
-    </div>
-  </section>
-
-  <!-- Hébergement -->
-  <section id="hebergement" class="section bg-light">
-    <h2>Hébergement</h2>
-    <div class="divider small"><span></span></div>
-    <p class="section-intro">Pour ceux qui viennent de loin, voici nos suggestions d'hébergements à proximité du château.</p>
-
-    <div class="hotels-grid">
-
-      <div class="hotel-card-v">
-        <span class="hotel-badge">Hôtel</span>
-        <h3>Haras des Chartreux</h3>
-        <p>Pl. de Bourgogne 1b<br />7730 Estaimpuis, Belgique</p>
-        <div class="map-wrapper">
-          <iframe
-            title="Haras des Chartreux"
-            src="https://maps.google.com/maps?q=Haras+des+Chartreux,+Pl.+de+Bourgogne+1b,+7730+Estaimpuis,+Belgique&output=embed"
-            width="100%" height="240" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-        <a class="map-link" href="https://maps.google.com/?q=Pl.+de+Bourgogne+1b,+7730+Estaimpuis,+Belgique" target="_blank" rel="noopener">Ouvrir dans Google Maps →</a>
-      </div>
-
-      <div class="hotel-card-v">
-        <span class="hotel-badge">Gîte</span>
-        <h3>Au Détour du Trieu</h3>
-        <p>Trieu à Mucques 5A<br />Pecq, Belgique</p>
-        <div class="map-wrapper">
-          <iframe
-            title="Au Détour du Trieu"
-            src="https://maps.google.com/maps?q=Trieu+à+Mucques+5A,+Pecq,+Belgique&output=embed"
-            width="100%" height="240" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-        <a class="map-link" href="https://maps.google.com/?q=Trieu+à+Mucques+5A,+Pecq,+Belgique" target="_blank" rel="noopener">Ouvrir dans Google Maps →</a>
-      </div>
-
-      <div class="hotel-card-v">
-        <span class="hotel-badge">Gîte</span>
-        <h3>Le Petit Paradis</h3>
-        <p>Rue du Village 18<br />Pecq, Belgique</p>
-        <div class="map-wrapper">
-          <iframe
-            title="Gîte Le Petit Paradis"
-            src="https://maps.google.com/maps?q=Rue+du+Village+18,+Pecq,+Belgique&output=embed"
-            width="100%" height="240" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-        <a class="map-link" href="https://maps.google.com/?q=Rue+du+Village+18,+Pecq,+Belgique" target="_blank" rel="noopener">Ouvrir dans Google Maps →</a>
       </div>
 
-      <div class="hotel-card-v">
-        <span class="hotel-badge">Chambre d'hôtes</span>
-        <h3>Terre d'Ô</h3>
-        <p>Chemin des Étangs 26<br />Pecq, Belgique</p>
-        <div class="map-wrapper">
-          <iframe
-            title="Terre d'Ô"
-            src="https://maps.google.com/maps?q=Chemin+des+Étangs+26,+Pecq,+Belgique&output=embed"
-            width="100%" height="240" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <!-- Titre et compte à rebours restent hors du groupe mis à l'échelle :
+           sinon la poussée de caméra les agrandit et les sort du cadre. -->
+      <div class="kiosque-title">
+          <p class="hero-pre">Le grand jour approche</p>
+          <h1>Candice <span class="amp">&amp;</span> Léo</h1>
+          <p class="hero-date">Le samedi 6 mars 2027</p>
+          <div class="divider" aria-hidden="true"><span></span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg><span></span></div>
         </div>
-        <a class="map-link" href="https://maps.google.com/?q=Chemin+des+Étangs+26,+Pecq,+Belgique" target="_blank" rel="noopener">Ouvrir dans Google Maps →</a>
-      </div>
 
-      <div class="hotel-card-v">
-        <span class="hotel-badge">Hôtel</span>
-        <h3>Ferme Delgueule</h3>
-        <p>Rue du Mont Saint-Aubert 12<br />Tournai, Belgique</p>
-        <div class="map-wrapper">
-          <iframe
-            title="Hôtel Ferme Delgueule"
-            src="https://maps.google.com/maps?q=Rue+du+Mont+Saint-Aubert+12,+Tournai,+Belgique&output=embed"
-            width="100%" height="240" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-        <a class="map-link" href="https://maps.google.com/?q=Rue+du+Mont+Saint-Aubert+12,+Tournai,+Belgique" target="_blank" rel="noopener">Ouvrir dans Google Maps →</a>
+        <!-- Compte à rebours -->
+        <div id="countdown" class="kiosque-countdown">
+          <div class="cd-block"><span id="cd-days">--</span><em>jours</em></div>
+          <div class="cd-block"><span id="cd-hours">--</span><em>heures</em></div>
+          <div class="cd-block"><span id="cd-minutes">--</span><em>minutes</em></div>
+          <div class="cd-block"><span id="cd-seconds">--</span><em>secondes</em></div>
       </div>
 
     </div>
   </section>
 
-  <!-- Dress code -->
-  <section id="dresscode" class="section">
-    <h2>Dress code</h2>
-    <div class="divider small"><span></span></div>
-    <p class="section-intro">Pour partager notre journée dans le plus bel élégance :</p>
 
-    <div class="dresscode-grid">
-
-      <div class="dresscode-card">
-        <div class="dc-icon">♀</div>
-        <h3>Mesdames</h3>
-        <ul>
-          <li>Tenue élégante de rigueur</li>
-          <li>Une touche de bordeaux est la bienvenue</li>
-          <li><strong>Merci d'éviter le blanc</strong></li>
-        </ul>
+  <!-- ============================================================
+       ACTE III — En chemin : la route vers l'église
+       ============================================================ -->
+  <section id="programme" class="act act-route" data-scene="route">
+    <div class="act-bg" aria-hidden="true">
+      <div class="scene scene-route">
+        <!-- Sol, route et congères partagent un même repère : sinon la route
+             converge au-dessus de la ligne d'horizon et flotte dans le ciel. -->
+        <div class="lyr lyr-ground">
+          <svg viewBox="0 0 1200 500" preserveAspectRatio="xMidYMax slice">
+            <path class="hill-b" d="M0 196 Q180 156 420 182 Q680 212 920 174 Q1070 154 1200 172 V500 H0 Z" />
+            <path class="road" d="M576 180 Q554 282 250 500 H950 Q646 282 624 180 Z" />
+            <g class="road-rut">
+              <path d="M590 184 Q572 282 402 500" />
+              <path d="M610 184 Q628 282 798 500" />
+            </g>
+            <path class="hill-a" d="M0 344 Q150 310 296 336 L296 500 H0 Z" />
+            <path class="hill-a" d="M904 336 Q1050 310 1200 340 V500 H904 Z" />
+          </svg>
+        </div>
+        <div class="lyr lyr-poles">
+          <svg viewBox="0 0 1200 400" preserveAspectRatio="xMidYMax slice">
+            <g class="fir fir-road">
+              <path d="M118 400 L176 176 L234 400Z M290 400 L334 232 L378 400Z M418 400 L450 288 L482 400Z
+                       M1082 400 L1024 176 L966 400Z M910 400 L866 232 L822 400Z M782 400 L750 288 L718 400Z" />
+            </g>
+            <g class="lamp">
+              <path d="M300 400 V226 M300 226 q0 -16 18 -16"/><circle cx="320" cy="209" r="7"/>
+              <path d="M900 400 V226 M900 226 q0 -16 -18 -16"/><circle cx="880" cy="209" r="7"/>
+              <path d="M474 352 V254 M474 254 q0 -11 13 -11"/><circle cx="489" cy="242" r="5"/>
+              <path d="M726 352 V254 M726 254 q0 -11 -13 -11"/><circle cx="711" cy="242" r="5"/>
+            </g>
+          </svg>
+        </div>
+        <div class="lyr lyr-spire">
+          <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMax meet">
+            <g class="spire">
+              <path d="M152 300 V192 H332 V300 Z" />
+              <path d="M142 192 L242 146 L342 192 Z" />
+              <path d="M68 300 V122 H142 V300 Z" />
+              <path d="M105 38 L150 122 H60 Z" />
+              <path d="M105 38 V16 M95 25 H115" />
+            </g>
+            <g class="spire-open">
+              <rect x="88" y="142" width="34" height="48" rx="17" />
+            </g>
+            <g class="spire-glass">
+              <circle class="spire-rose" cx="242" cy="216" r="17" />
+              <rect x="182" y="248" width="20" height="42" rx="10" />
+              <rect x="232" y="248" width="20" height="42" rx="10" />
+              <rect x="282" y="248" width="20" height="42" rx="10" />
+            </g>
+          </svg>
+        </div>
       </div>
-
-      <div class="dresscode-card featured">
-        <div class="dc-icon">♂</div>
-        <h3>Messieurs</h3>
-        <ul>
-          <li>Costume de rigueur</li>
-          <li><strong>Cravate obligatoire</strong></li>
-          <li>Une touche de bordeaux est la bienvenue</li>
-        </ul>
-      </div>
-
     </div>
 
-    <div class="palette">
-      <span class="swatch bordeaux" title="Bordeaux"></span>
-      <p>La couleur bordeaux est à l'honneur</p>
+    <div class="act-body">
+      <header class="act-head" data-reveal="up">
+        <p class="act-num">Acte III</p>
+        <h2>Programme de la journée</h2>
+        <div class="divider small" aria-hidden="true"><span></span></div>
+      </header>
+
+      <div class="timeline" data-reveal-group>
+        <div class="tl-item" data-reveal="up">
+          <div class="tl-icon">&#9788;</div>
+          <div class="tl-content">
+            <h3>14h00 — Cérémonie religieuse</h3>
+            <p>Église de Mouvaux<br />10 Pl. du Général de Gaulle, 59420 Mouvaux</p>
+          </div>
+        </div>
+        <div class="tl-item" data-reveal="up">
+          <div class="tl-icon">&#10047;</div>
+          <div class="tl-content">
+            <h3>17h00 — Vin d'honneur</h3>
+            <p>Dans l'orangerie du Château du Biez<br />Rue de Lannoy 145, 7740 Pecq, Belgique</p>
+          </div>
+        </div>
+        <div class="tl-item" data-reveal="up">
+          <div class="tl-icon">&#9835;</div>
+          <div class="tl-content">
+            <h3>Soirée — Réception &amp; dîner</h3>
+            <p>Château du Biez<br />Rue de Lannoy 145, 7740 Pecq, Belgique</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Cagnotte -->
-  <section id="cagnotte" class="section bg-light">
-    <h2>Liste de mariage</h2>
-    <div class="divider small"><span></span></div>
-    <p class="section-intro">
-      Votre présence est le plus beau des cadeaux.<br />
-      Si vous souhaitez contribuer à notre voyage en Nouvelle-Zélande,<br />
-      une cagnotte est disponible en ligne — et une urne sera également présente le jour J.
-    </p>
-    <div class="cagnotte-box">
-      <div class="cagnotte-icon">&#9825;</div>
-      <p class="cagnotte-label">Participer à la cagnotte</p>
-      <a class="btn-cagnotte" href="https://paypal.me/leodelaby" target="_blank" rel="noopener">
-        Contribuer en ligne →
-      </a>
-      <p class="cagnotte-urne">Une urne sera également présente lors de la réception.</p>
+
+  <!-- ============================================================
+       ACTE IV — L'église : vitraux et lumière
+       ============================================================ -->
+  <section id="lieux" class="act act-eglise" data-scene="eglise">
+    <div class="act-bg" aria-hidden="true">
+      <div class="scene scene-eglise">
+        <div class="lyr lyr-nave">
+          <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
+            <!-- bas-côtés -->
+            <path class="nave-wall" d="M0 0 H1200 V700 H0 Z" />
+            <!-- arcades -->
+            <g class="arch">
+              <path d="M120 700 V300 Q120 190 230 190 Q340 190 340 300 V700 Z" />
+              <path d="M860 700 V300 Q860 190 970 190 Q1080 190 1080 300 V700 Z" />
+            </g>
+            <!-- vitrail central -->
+            <g class="window">
+              <path class="win-frame" d="M470 620 V270 Q470 140 600 140 Q730 140 730 270 V620 Z" />
+              <g class="win-panes">
+                <path class="pane-gold" d="M500 600 V280 Q500 174 600 174 Q700 174 700 280 V600 Z" />
+                <g class="pane-grid">
+                  <rect class="pane-blue"  x="500" y="300" width="52" height="80" />
+                  <rect class="pane-ruby"  x="552" y="300" width="96" height="80" />
+                  <rect class="pane-blue"  x="648" y="300" width="52" height="80" />
+                  <rect class="pane-gold2" x="500" y="380" width="52" height="80" />
+                  <rect class="pane-blue"  x="552" y="380" width="96" height="80" />
+                  <rect class="pane-ruby"  x="648" y="380" width="52" height="80" />
+                  <rect class="pane-ruby"  x="500" y="460" width="52" height="80" />
+                  <rect class="pane-green" x="552" y="460" width="96" height="80" />
+                  <rect class="pane-blue"  x="648" y="460" width="52" height="80" />
+                  <rect class="pane-blue"  x="500" y="540" width="52" height="60" />
+                  <rect class="pane-ruby"  x="552" y="540" width="96" height="60" />
+                  <rect class="pane-gold2" x="648" y="540" width="52" height="60" />
+                </g>
+              </g>
+              <g class="win-lead">
+                <path d="M600 168 V600 M508 300 H692 M512 380 H688 M516 460 H684 M520 540 H680
+                         M552 190 V600 M648 190 V600" />
+              </g>
+            </g>
+            <!-- rosace -->
+            <g class="rose">
+              <circle class="rose-o" cx="600" cy="86" r="46" />
+              <g class="rose-glass">
+                <circle class="pane-ruby" cx="600" cy="52" r="11" />
+                <circle class="pane-blue" cx="631" cy="70" r="11" />
+                <circle class="pane-blue" cx="569" cy="70" r="11" />
+                <circle class="pane-green" cx="631" cy="103" r="11" />
+                <circle class="pane-green" cx="569" cy="103" r="11" />
+                <circle class="pane-ruby" cx="600" cy="120" r="11" />
+                <circle class="pane-gold2" cx="600" cy="86" r="13" />
+              </g>
+              <g class="rose-p">
+                <path d="M600 42 V130 M556 86 H644 M569 55 L631 117 M631 55 L569 117" />
+              </g>
+            </g>
+          </svg>
+        </div>
+        <!-- faisceaux de lumière colorée -->
+        <div class="lyr lyr-beams">
+          <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
+            <path class="beam beam-1" d="M540 200 L300 700 H520 L590 210 Z" />
+            <path class="beam beam-2" d="M600 200 L560 700 H720 L640 210 Z" />
+            <path class="beam beam-3" d="M660 205 L860 700 H1000 L700 215 Z" />
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="act-body">
+      <header class="act-head" data-reveal="up">
+        <p class="act-num">Acte IV</p>
+        <h2>Les lieux</h2>
+        <div class="divider small" aria-hidden="true"><span></span></div>
+      </header>
+
+      <div class="venues" data-reveal-group>
+
+        <div class="venue-card" data-reveal="up">
+          <h3>Cérémonie</h3>
+          <h4>Église de Mouvaux</h4>
+          <p>10 Pl. du Général de Gaulle<br />59420 Mouvaux, France</p>
+          <div class="map-wrapper">
+            <button class="map-facade" type="button"
+              data-map="https://www.google.com/maps?q=10+Pl.+du+G%C3%A9n%C3%A9ral+de+Gaulle,+59420+Mouvaux&output=embed"
+              data-title="Carte — Église de Mouvaux">
+              <span class="mf-pin" aria-hidden="true">&#9679;</span>
+              <span class="mf-label">Afficher la carte</span>
+            </button>
+          </div>
+          <a class="map-link" href="https://maps.google.com/?q=10+Pl.+du+Général+de+Gaulle,+59420+Mouvaux" target="_blank" rel="noopener">Ouvrir dans Google Maps →</a>
+        </div>
+
+        <div class="venue-card" data-reveal="up">
+          <h3>Réception</h3>
+          <h4>Château du Biez</h4>
+          <p>Rue de Lannoy 145<br />7740 Pecq, Belgique</p>
+          <div class="map-wrapper">
+            <button class="map-facade" type="button"
+              data-map="https://www.google.com/maps?q=Rue+de+Lannoy+145,+7740+Pecq,+Belgique&output=embed"
+              data-title="Carte — Château du Biez">
+              <span class="mf-pin" aria-hidden="true">&#9679;</span>
+              <span class="mf-label">Afficher la carte</span>
+            </button>
+          </div>
+          <a class="map-link" href="https://maps.google.com/?q=Rue+de+Lannoy+145,+7740+Pecq,+Belgique" target="_blank" rel="noopener">Ouvrir dans Google Maps →</a>
+        </div>
+
+      </div>
     </div>
   </section>
 
-  <!-- Album -->
-  <section id="album" class="section">
-    <h2>Notre album</h2>
-    <div class="divider small"><span></span></div>
-    <p class="section-intro">Quelques instants partagés, avant le plus beau.</p>
-    <div class="album-grid">
-      <div class="album-item">
-        <img src="images/photo-plage.jpg" alt="Candice et Léo à la plage" loading="lazy" />
+
+  <!-- ============================================================
+       ACTE V — L'orangerie : vin d'honneur, fin d'après-midi
+       ============================================================ -->
+  <section id="hebergement" class="act act-orangerie" data-scene="orangerie">
+    <div class="act-bg" aria-hidden="true">
+      <div class="scene scene-orangerie">
+        <div class="lyr lyr-glass">
+          <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
+            <!-- mur intérieur : opaque, sinon l'acte précédent transparaît -->
+            <rect class="og-wall" x="0" y="0" width="1200" height="700" />
+            <g class="og-bay">
+              <path class="og-pane" d="M60 700 V260 Q60 130 200 130 Q340 130 340 260 V700 Z" />
+              <path class="og-pane" d="M420 700 V240 Q420 100 600 100 Q780 100 780 240 V700 Z" />
+              <path class="og-pane" d="M860 700 V260 Q860 130 1000 130 Q1140 130 1140 260 V700 Z" />
+            </g>
+            <g class="og-mullion">
+              <path d="M200 132 V700 M60 300 H340 M60 400 H340 M60 500 H340 M60 600 H340
+                       M600 102 V700 M420 280 H780 M420 380 H780 M420 480 H780 M420 580 H780 M420 680 H780
+                       M1000 132 V700 M860 300 H1140 M860 400 H1140 M860 500 H1140 M860 600 H1140
+                       M130 200 V700 M270 200 V700 M500 160 V700 M700 160 V700 M930 200 V700 M1070 200 V700" />
+            </g>
+          </svg>
+        </div>
+        <div class="lyr lyr-plants">
+          <svg viewBox="0 0 1200 400" preserveAspectRatio="xMidYMax slice">
+            <g class="leaf">
+              <path d="M130 332 Q108 262 62 220 Q104 258 136 330 Z" />
+              <path d="M130 332 Q120 250 96 190 Q126 250 141 330 Z" />
+              <path d="M130 332 Q134 244 130 174 Q148 246 146 330 Z" />
+              <path d="M130 332 Q152 250 186 194 Q158 258 142 330 Z" />
+              <path d="M130 332 Q166 268 210 230 Q170 272 138 332 Z" />
+              <path d="M1070 332 Q1092 262 1138 220 Q1096 258 1064 330 Z" />
+              <path d="M1070 332 Q1080 250 1104 190 Q1074 250 1059 330 Z" />
+              <path d="M1070 332 Q1066 244 1070 174 Q1052 246 1054 330 Z" />
+              <path d="M1070 332 Q1048 250 1014 194 Q1042 258 1058 330 Z" />
+              <path d="M1070 332 Q1034 268 990 230 Q1030 272 1062 332 Z" />
+            </g>
+            <g class="pot">
+              <path d="M86 400 h88 l-12 -62 h-64 z" />
+              <path d="M1026 400 h88 l-12 -62 h-64 z" />
+            </g>
+            <g class="pot-rim">
+              <rect x="78" y="326" width="104" height="16" rx="4" />
+              <rect x="1018" y="326" width="104" height="16" rx="4" />
+            </g>
+          </svg>
+        </div>
+        <div class="lyr lyr-dust" aria-hidden="true">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
       </div>
-      <div class="album-item">
-        <img src="images/photo-cadix.jpg" alt="Candice et Léo à Cadix" loading="lazy" />
+    </div>
+
+    <div class="act-body">
+      <header class="act-head" data-reveal="up">
+        <p class="act-num">Acte V</p>
+        <h2>Hébergement</h2>
+        <div class="divider small" aria-hidden="true"><span></span></div>
+        <p class="section-intro">Pour ceux qui viennent de loin, voici nos suggestions d'hébergements à proximité du château.</p>
+      </header>
+
+      <div class="hotels-grid" data-reveal-group>
+
+        <div class="hotel-card-v" data-reveal="up">
+          <span class="hotel-badge">Hôtel</span>
+          <h3>Haras des Chartreux</h3>
+          <p>Pl. de Bourgogne 1b<br />7730 Estaimpuis, Belgique</p>
+          <div class="map-wrapper">
+            <button class="map-facade" type="button"
+              data-map="https://maps.google.com/maps?q=Haras+des+Chartreux,+Pl.+de+Bourgogne+1b,+7730+Estaimpuis,+Belgique&output=embed"
+              data-title="Carte — Haras des Chartreux">
+              <span class="mf-pin" aria-hidden="true">&#9679;</span><span class="mf-label">Afficher la carte</span>
+            </button>
+          </div>
+          <a class="map-link" href="https://maps.google.com/?q=Pl.+de+Bourgogne+1b,+7730+Estaimpuis,+Belgique" target="_blank" rel="noopener">Ouvrir dans Google Maps →</a>
+        </div>
+
+        <div class="hotel-card-v" data-reveal="up">
+          <span class="hotel-badge">Gîte</span>
+          <h3>Au Détour du Trieu</h3>
+          <p>Trieu à Mucques 5A<br />Pecq, Belgique</p>
+          <div class="map-wrapper">
+            <button class="map-facade" type="button"
+              data-map="https://maps.google.com/maps?q=Trieu+%C3%A0+Mucques+5A,+Pecq,+Belgique&output=embed"
+              data-title="Carte — Au Détour du Trieu">
+              <span class="mf-pin" aria-hidden="true">&#9679;</span><span class="mf-label">Afficher la carte</span>
+            </button>
+          </div>
+          <a class="map-link" href="https://maps.google.com/?q=Trieu+à+Mucques+5A,+Pecq,+Belgique" target="_blank" rel="noopener">Ouvrir dans Google Maps →</a>
+        </div>
+
+        <div class="hotel-card-v" data-reveal="up">
+          <span class="hotel-badge">Gîte</span>
+          <h3>Le Petit Paradis</h3>
+          <p>Rue du Village 18<br />Pecq, Belgique</p>
+          <div class="map-wrapper">
+            <button class="map-facade" type="button"
+              data-map="https://maps.google.com/maps?q=Rue+du+Village+18,+Pecq,+Belgique&output=embed"
+              data-title="Carte — Le Petit Paradis">
+              <span class="mf-pin" aria-hidden="true">&#9679;</span><span class="mf-label">Afficher la carte</span>
+            </button>
+          </div>
+          <a class="map-link" href="https://maps.google.com/?q=Rue+du+Village+18,+Pecq,+Belgique" target="_blank" rel="noopener">Ouvrir dans Google Maps →</a>
+        </div>
+
+        <div class="hotel-card-v" data-reveal="up">
+          <span class="hotel-badge">Chambre d'hôtes</span>
+          <h3>Terre d'Ô</h3>
+          <p>Chemin des Étangs 26<br />Pecq, Belgique</p>
+          <div class="map-wrapper">
+            <button class="map-facade" type="button"
+              data-map="https://maps.google.com/maps?q=Chemin+des+%C3%89tangs+26,+Pecq,+Belgique&output=embed"
+              data-title="Carte — Terre d'Ô">
+              <span class="mf-pin" aria-hidden="true">&#9679;</span><span class="mf-label">Afficher la carte</span>
+            </button>
+          </div>
+          <a class="map-link" href="https://maps.google.com/?q=Chemin+des+Étangs+26,+Pecq,+Belgique" target="_blank" rel="noopener">Ouvrir dans Google Maps →</a>
+        </div>
+
+        <div class="hotel-card-v" data-reveal="up">
+          <span class="hotel-badge">Hôtel</span>
+          <h3>Ferme Delgueule</h3>
+          <p>Rue du Mont Saint-Aubert 12<br />Tournai, Belgique</p>
+          <div class="map-wrapper">
+            <button class="map-facade" type="button"
+              data-map="https://maps.google.com/maps?q=Rue+du+Mont+Saint-Aubert+12,+Tournai,+Belgique&output=embed"
+              data-title="Carte — Ferme Delgueule">
+              <span class="mf-pin" aria-hidden="true">&#9679;</span><span class="mf-label">Afficher la carte</span>
+            </button>
+          </div>
+          <a class="map-link" href="https://maps.google.com/?q=Rue+du+Mont+Saint-Aubert+12,+Tournai,+Belgique" target="_blank" rel="noopener">Ouvrir dans Google Maps →</a>
+        </div>
+
       </div>
-      <div class="album-item">
-        <img src="images/photo-munich.jpg" alt="Candice et Léo à Munich" loading="lazy" />
-      </div>
-      <div class="album-item">
-        <img src="images/photo-neige.jpg" alt="Candice et Léo sous la neige" loading="lazy" />
-      </div>
-      <div class="album-item">
-        <img src="images/photo-rome.jpg" alt="Candice et Léo à Rome" loading="lazy" />
+
+      <!-- Dress code, second temps de l'acte -->
+      <div id="dresscode" class="act-sub">
+        <header class="act-head" data-reveal="up">
+          <h2>Dress code</h2>
+          <div class="divider small" aria-hidden="true"><span></span></div>
+          <p class="section-intro">Pour partager notre journée dans la plus belle élégance :</p>
+        </header>
+
+        <div class="dresscode-grid" data-reveal-group>
+          <div class="dresscode-card" data-reveal="up">
+            <div class="dc-icon">♀</div>
+            <h3>Mesdames</h3>
+            <ul>
+              <li>Tenue élégante de rigueur</li>
+              <li>Une touche de bordeaux est la bienvenue</li>
+              <li><strong>Merci d'éviter le blanc</strong></li>
+            </ul>
+          </div>
+          <div class="dresscode-card featured" data-reveal="up">
+            <div class="dc-icon">♂</div>
+            <h3>Messieurs</h3>
+            <ul>
+              <li>Costume de rigueur</li>
+              <li><strong>Cravate obligatoire</strong></li>
+              <li>Une touche de bordeaux est la bienvenue</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="palette" data-reveal="up">
+          <span class="swatch bordeaux" title="Bordeaux"></span>
+          <p>La couleur bordeaux est à l'honneur</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
+
+  <!-- ============================================================
+       ACTE VI — La soirée : nuit étoilée sur le château
+       ============================================================ -->
+  <section id="cagnotte" class="act act-soiree" data-scene="soiree">
+    <div class="act-bg" aria-hidden="true">
+      <div class="scene scene-soiree">
+        <div class="lyr lyr-stars"><canvas id="film-stars"></canvas></div>
+        <div class="lyr lyr-moon"><div class="moon"></div></div>
+        <div class="lyr lyr-chateau">
+          <svg viewBox="0 0 1200 420" preserveAspectRatio="xMidYMax slice">
+            <g class="ch">
+              <path d="M250 420 V214 H420 V420 Z" />
+              <path d="M420 420 V158 H780 V420 Z" />
+              <path d="M780 420 V214 H950 V420 Z" />
+              <path d="M235 214 L335 138 L435 214 Z" />
+              <path d="M405 158 L600 56 L795 158 Z" />
+              <path d="M765 214 L865 138 L965 214 Z" />
+              <path d="M600 56 V22 M592 30 h16" />
+            </g>
+            <g class="ch-win">
+              <rect x="288" y="252" width="22" height="34" rx="10"/><rect x="360" y="252" width="22" height="34" rx="10"/>
+              <rect x="470" y="206" width="24" height="38" rx="11"/><rect x="556" y="206" width="24" height="38" rx="11"/>
+              <rect x="642" y="206" width="24" height="38" rx="11"/><rect x="716" y="206" width="24" height="38" rx="11"/>
+              <rect x="470" y="300" width="24" height="38" rx="11"/><rect x="556" y="300" width="24" height="38" rx="11"/>
+              <rect x="642" y="300" width="24" height="38" rx="11"/><rect x="716" y="300" width="24" height="38" rx="11"/>
+              <rect x="818" y="252" width="22" height="34" rx="10"/><rect x="890" y="252" width="22" height="34" rx="10"/>
+            </g>
+          </svg>
+        </div>
+        <div class="lyr lyr-lights">
+          <svg viewBox="0 0 1200 200" preserveAspectRatio="xMidYMin slice">
+            <path class="wire" d="M-20 30 Q160 108 340 44 Q520 -16 700 52 Q880 116 1060 40 Q1150 8 1220 34" />
+            <g class="bulb">
+              <circle cx="80" cy="72" r="5"/><circle cx="180" cy="94" r="5"/><circle cx="272" cy="80" r="5"/>
+              <circle cx="380" cy="40" r="5"/><circle cx="470" cy="20" r="5"/><circle cx="570" cy="16" r="5"/>
+              <circle cx="660" cy="42" r="5"/><circle cx="760" cy="76" r="5"/><circle cx="860" cy="94" r="5"/>
+              <circle cx="960" cy="74" r="5"/><circle cx="1060" cy="42" r="5"/><circle cx="1150" cy="24" r="5"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="act-body">
+      <header class="act-head" data-reveal="up">
+        <p class="act-num">Acte VI</p>
+        <h2>Liste de mariage</h2>
+        <div class="divider small" aria-hidden="true"><span></span></div>
+        <p class="section-intro">
+          Votre présence est le plus beau des cadeaux.<br />
+          Si vous souhaitez contribuer à notre voyage en Nouvelle-Zélande,<br />
+          une cagnotte est disponible en ligne — et une urne sera également présente le jour J.
+        </p>
+      </header>
+
+      <div class="cagnotte-box" data-reveal="up">
+        <div class="cagnotte-icon">&#9825;</div>
+        <p class="cagnotte-label">Participer à la cagnotte</p>
+        <a class="btn-cagnotte" href="https://paypal.me/leodelaby" target="_blank" rel="noopener">
+          Contribuer en ligne →
+        </a>
+        <p class="cagnotte-urne">Une urne sera également présente lors de la réception.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       ACTE VII — L'album : travelling sur nos souvenirs
+       ============================================================ -->
+  <section id="album" class="act act-album" data-scene="album">
+    <div class="act-body">
+      <header class="act-head" data-reveal="up">
+        <p class="act-num">Acte VII</p>
+        <h2>Notre album</h2>
+        <div class="divider small" aria-hidden="true"><span></span></div>
+        <p class="section-intro">Quelques instants partagés, avant le plus beau.</p>
+      </header>
+    </div>
+
+    <div class="album-rail-wrap">
+      <div class="album-pin">
+      <div class="album-rail">
+        <figure class="album-item">
+          <picture>
+            <source type="image/webp" srcset="images/photo-plage@sm.webp 525w, images/photo-plage.webp 1050w" sizes="(max-width: 720px) 70vw, 34vw" />
+            <img src="images/photo-plage.jpg" alt="Candice et Léo à la plage" loading="lazy" width="1050" height="1400" />
+          </picture>
+          <figcaption>La plage</figcaption>
+        </figure>
+        <figure class="album-item">
+          <picture>
+            <source type="image/webp" srcset="images/photo-cadix@sm.webp 525w, images/photo-cadix.webp 1050w" sizes="(max-width: 720px) 70vw, 34vw" />
+            <img src="images/photo-cadix.jpg" alt="Candice et Léo à Cadix" loading="lazy" width="1050" height="1400" />
+          </picture>
+          <figcaption>Cadix</figcaption>
+        </figure>
+        <figure class="album-item wide">
+          <picture>
+            <source type="image/webp" srcset="images/photo-munich@sm.webp 700w, images/photo-munich.webp 1125w" sizes="(max-width: 720px) 70vw, 42vw" />
+            <img src="images/photo-munich.jpg" alt="Candice et Léo à Munich" loading="lazy" width="1125" height="844" />
+          </picture>
+          <figcaption>Munich</figcaption>
+        </figure>
+        <figure class="album-item">
+          <picture>
+            <source type="image/webp" srcset="images/photo-neige@sm.webp 525w, images/photo-neige.webp 844w" sizes="(max-width: 720px) 70vw, 34vw" />
+            <img src="images/photo-neige.jpg" alt="Candice et Léo sous la neige" loading="lazy" width="844" height="1125" />
+          </picture>
+          <figcaption>Sous la neige</figcaption>
+        </figure>
+        <figure class="album-item">
+          <picture>
+            <source type="image/webp" srcset="images/photo-rome@sm.webp 525w, images/photo-rome.webp 1050w" sizes="(max-width: 720px) 70vw, 34vw" />
+            <img src="images/photo-rome.jpg" alt="Candice et Léo à Rome" loading="lazy" width="1050" height="1400" />
+          </picture>
+          <figcaption>Rome</figcaption>
+        </figure>
+      </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Générique -->
   <footer>
     <p>Candice &amp; Léo — 6 mars 2027</p>
     <p class="footer-sub">Fait avec amour &#10084;</p>
   </footer>
 
   <!-- Lightbox -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo agrandie">
     <button class="lightbox-close" id="lightbox-close" aria-label="Fermer">&times;</button>
     <img id="lightbox-img" src="" alt="" />
   </div>
 
+  <script src="film.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
