@@ -14,7 +14,6 @@
     var(--sky-mid, #f8eeea) 52%,
     var(--sky-bot, #f2e6e6) 100%);
 }
-/* Voile de vignettage, qui se renforce la nuit */
 .film-atmosphere::after {
   content: '';
   position: absolute;
@@ -24,7 +23,6 @@
   transition: opacity 0.4s linear;
 }
 
-/* ---------- Neige : un seul canvas pour tout le film ---------- */
 /* z-index 1 : au-dessus des décors (0), sous le contenu lisible (2) */
 .film-snow {
   position: fixed;
@@ -35,7 +33,6 @@
   transition: opacity 0.5s linear;
 }
 
-/* ---------- Barre de progression ---------- */
 .film-progress {
   position: fixed;
   top: 0;
@@ -60,7 +57,6 @@
   position: relative;
   --ink: var(--bordeaux);
   --ink-soft: var(--text-light);
-  /* Or plus profond sur fond clair : le doré clair disparaît sur la neige */
   --ink-accent: #a8763a;
 }
 
@@ -90,27 +86,29 @@
   margin-top: -100svh;
 }
 .act-head { position: relative; margin-bottom: 44px; }
-.act-sub { margin-top: 22vh; }
 
-/* Actes sombres : un voile derrière le titre, sinon le blanc se perd
-   sur les vitraux et les guirlandes. */
-.act-eglise .act-head::before,
-.act-soiree .act-head::before {
+/* Un voile derrière le titre : sans lui, il se perd sur les décors chargés */
+.act-head::before {
   content: '';
   position: absolute;
   inset: -40px -10vw;
   z-index: -1;
-  background: radial-gradient(ellipse at center, rgba(12, 8, 18, 0.78) 0%, rgba(12, 8, 18, 0) 72%);
+}
+.act-chateau .act-head::before,
+.act-orangerie .act-head::before {
+  background: radial-gradient(ellipse at center, rgba(253, 248, 244, 0.86) 0%, rgba(253, 248, 244, 0) 72%);
+}
+.act-vestiaire .act-head::before,
+.act-nz .act-head::before {
+  background: radial-gradient(ellipse at center, rgba(10, 14, 18, 0.68) 0%, rgba(10, 14, 18, 0) 72%);
 }
 
 .scene { position: absolute; inset: 0; }
-/* Pas de will-change ici : une vingtaine de couches plein écran promues en
-   permanence coûte plus cher en mémoire mobile que ça ne fait gagner. */
 .lyr {
   position: absolute;
   inset: 0;
 }
-.lyr svg { width: 100%; height: 100%; display: block; }
+.lyr svg, .scene > svg { width: 100%; height: 100%; display: block; }
 
 /* ---------- Révélations à l'entrée ---------- */
 [data-reveal] {
@@ -138,138 +136,34 @@
 
 
 /* =============================================================
-   ACTE II — Le kiosque à musique sous la neige
+   ACTE II — Le hero : la photo, plein cadre
    ============================================================= */
-.act-kiosque { height: 300vh; }
+.act-hero { height: 300vh; }
 
-.scene-kiosque {
-  /* Poussée de caméra : tout le décor grossit doucement vers les mariés */
+.scene-hero {
   transform: scale(var(--push, 1));
-  transform-origin: 50% 74%;
+  transform-origin: 50% 46%;
+}
+.lyr-photo picture { display: block; width: 100%; height: 100%; }
+.lyr-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 40%;
+  display: block;
+}
+/* Voile haut et bas : la photo est très claire, le texte a besoin d'un appui */
+.lyr-scrim {
+  background:
+    linear-gradient(180deg, rgba(253, 248, 244, 0.97) 0%, rgba(253, 248, 244, 0.84) 15%,
+                            rgba(253, 248, 244, 0.44) 29%, rgba(253, 248, 244, 0) 46%),
+    linear-gradient(0deg,   rgba(253, 248, 244, 0.94) 0%, rgba(253, 248, 244, 0.56) 14%,
+                            rgba(253, 248, 244, 0) 32%);
 }
 
-/* Lointain */
-.scene-kiosque .lyr-far {
-  top: auto;
-  bottom: 16%;
-  height: 30%;
-  transform: translateY(calc(var(--par-far, 0) * 1px));
-  opacity: 0.75;
-}
-.fir-far path { fill: #c3d3e0; }
-
-.scene-kiosque .lyr-mid {
-  top: auto;
-  bottom: 13%;
-  height: 40%;
-  transform: translateY(calc(var(--par-mid, 0) * 1px));
-}
-.fir-mid path { fill: #9fb6c9; }
-.bare-tree path {
-  fill: none;
-  stroke: #8ba1b4;
-  stroke-width: 3.5;
-  stroke-linecap: round;
-}
-
-/* La scène du kiosque : repère commun au bâti et aux mariés */
-/* Taille bornée par la hauteur : le faîtage doit rester sous le titre */
-.k-stage {
+.hero-title {
   position: absolute;
-  left: 50%;
-  bottom: 16%;
-  width: min(72vw, 52svh * 1.25, 700px);
-  aspect-ratio: 400 / 320;
-  transform: translateX(-50%) translateY(calc(var(--par-kio, 0) * 1px));
-}
-.k-stage svg { width: 100%; height: 100%; }
-
-.kiosque .k-glow {
-  fill: rgba(240, 205, 145, 0.42);
-  filter: blur(16px);
-}
-.kiosque .k-inner  { fill: #8d7076; }
-.kiosque .k-roof   { fill: var(--bordeaux); }
-.kiosque .k-roof-lines path {
-  fill: none;
-  stroke: rgba(255, 240, 236, 0.22);
-  stroke-width: 1.5;
-}
-.kiosque .k-snow    { fill: #fffdfb; }
-.kiosque .k-finial path   { stroke: var(--gold); stroke-width: 3; stroke-linecap: round; }
-.kiosque .k-finial circle { fill: var(--gold); }
-.kiosque .k-cornice { fill: #fdf6f2; }
-.kiosque .k-valance { fill: #f4e7e5; }
-.kiosque .k-col     { fill: #fdf8f4; }
-.kiosque .k-rail    { fill: #f7ece9; }
-.kiosque .k-baluster path {
-  fill: none;
-  stroke: #e3d0d2;
-  stroke-width: 2.6;
-  stroke-linecap: round;
-}
-.kiosque .k-floor { fill: #e8d8d9; }
-.kiosque .k-step  { fill: #efe2e1; }
-
-.kiosque .k-garland {
-  fill: none;
-  stroke: rgba(107, 26, 42, 0.35);
-  stroke-width: 1.4;
-}
-.kiosque .k-bulbs circle {
-  fill: var(--gold);
-  animation: bulbGlow 3.4s ease-in-out infinite;
-}
-.kiosque .k-bulbs circle:nth-child(2n) { animation-delay: 0.5s; }
-.kiosque .k-bulbs circle:nth-child(3n) { animation-delay: 1.1s; }
-@keyframes bulbGlow {
-  0%, 100% { opacity: 0.55; }
-  50%      { opacity: 1; }
-}
-
-/* Les mariés, debout dans la neige devant le kiosque */
-/* Unités de hauteur, pas de pourcentage : un padding en % se résout sur la
-   largeur, et les pieds décrochaient de la congère selon le format d'écran. */
-.scene-kiosque .lyr-couple {
-  display: grid;
-  place-items: end center;
-  padding-bottom: 9svh;
-  transform: translateY(calc(var(--par-cpl, 0) * 1px));
-}
-.couple-img {
-  height: min(46svh, 52vw);
-  width: auto;
-  filter: drop-shadow(0 18px 26px rgba(58, 40, 52, 0.28));
-  position: relative;
-  z-index: 2;
-}
-.couple-shadow {
-  position: absolute;
-  bottom: calc(9svh - 6px);
-  left: 50%;
-  width: min(22svh, 25vw);
-  height: 2.8svh;
-  transform: translateX(-50%);
-  border-radius: 50%;
-  background: radial-gradient(ellipse at center, rgba(90, 104, 128, 0.34), rgba(90, 104, 128, 0) 70%);
-  filter: blur(3px);
-}
-
-/* Congères */
-.scene-kiosque .lyr-drift {
-  top: auto;
-  bottom: 0;
-  height: 26%;
-  transform: translateY(calc(var(--par-drift, 0) * 1px));
-  z-index: 3;
-}
-.drift-a { fill: #fffdfb; }
-.drift-b { fill: #eef3f8; }
-
-/* Titre */
-.kiosque-title {
-  position: absolute;
-  top: 6svh;
+  top: 5svh;
   left: 50%;
   transform: translateX(-50%) translateY(calc(var(--title-y, 0) * 1px));
   width: min(92vw, 680px);
@@ -277,34 +171,33 @@
   z-index: 4;
   opacity: var(--title-o, 1);
 }
-.kiosque-title .hero-pre {
+.hero-title .hero-pre {
   font-size: 0.72rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--bordeaux-light);
   margin-bottom: 12px;
 }
-.kiosque-title h1 {
+.hero-title h1 {
   font-family: var(--font-serif);
   font-size: clamp(2.6rem, 7.4vw, 5.4rem);
   font-weight: 300;
   letter-spacing: 0.03em;
   line-height: 1.05;
   color: var(--bordeaux);
-  text-shadow: 0 2px 20px rgba(253, 248, 244, 0.9);
+  text-shadow: 0 2px 24px rgba(253, 248, 244, 0.95);
 }
-.kiosque-title h1 .amp { color: var(--gold); font-style: italic; margin: 0 6px; }
-.kiosque-title .hero-date {
+.hero-title h1 .amp { color: var(--gold); font-style: italic; margin: 0 6px; }
+.hero-title .hero-date {
   font-family: var(--font-serif);
   font-size: clamp(1rem, 2.4vw, 1.35rem);
   letter-spacing: 0.12em;
   color: var(--bordeaux-light);
   margin-top: 8px;
 }
-.kiosque-title .divider { margin: 14px auto 0; color: var(--gold); }
+.hero-title .divider { margin: 14px auto 0; color: var(--gold); }
 
-/* Compte à rebours */
-.kiosque-countdown {
+.hero-countdown {
   position: absolute;
   bottom: 4svh;
   left: 50%;
@@ -317,9 +210,8 @@
 
 
 /* =============================================================
-   ACTE III — En chemin : la route vers l'église
+   ACTE III — En chemin : la route
    ============================================================= */
-/* Le titre commence sous l'horizon, pour laisser voir l'église qui approche */
 .act-route .act-body { padding-top: 68vh; }
 
 .scene-route .lyr-ground {
@@ -356,7 +248,6 @@
   filter: drop-shadow(0 0 7px rgba(201, 169, 110, 0.95));
 }
 
-/* L'église grossit à mesure qu'on approche, depuis la ligne d'horizon */
 .scene-route .lyr-spire {
   top: auto;
   bottom: 46%;
@@ -375,46 +266,34 @@
 
 
 /* =============================================================
-   ACTE IV — L'église
+   ACTE IV — Le château
    ============================================================= */
-.act-eglise {
-  --ink: #f7ece8;
-  --ink-soft: rgba(247, 236, 232, 0.74);
-  --ink-accent: var(--gold);
-}
-.act-eglise .act-body { padding-top: 54vh; }
-
-.scene-eglise { transform: scale(var(--nave-s, 1)); transform-origin: 50% 46%; }
-.nave-wall { fill: #2b2430; }
-.arch path { fill: #221c27; }
-.win-frame { fill: #16121c; }
-
-/* Verrière : les panneaux s'allument ensemble, pilotés par --win-o */
-.win-panes, .rose-glass { opacity: var(--win-o, 0.3); }
-/* Teintes de verrière ancienne : profondes plutôt que primaires */
-.pane-gold  { fill: #c9963f; }
-.pane-gold2 { fill: #ddb45e; }
-.pane-blue  { fill: #2a4d87; }
-.pane-ruby  { fill: #8d2b36; }
-.pane-green { fill: #38634a; }
-
-.win-lead path {
-  fill: none;
-  stroke: #17121b;
-  stroke-width: 4;
-}
-.rose-o { fill: #17121b; }
-.rose-p path {
-  fill: none;
-  stroke: #17121b;
-  stroke-width: 5;
+.act-chateau .act-body { padding-top: 62vh; }
+.scene-chateau {
+  transform: scale(var(--ch-s, 1));
+  transform-origin: 50% 62%;
 }
 
-.scene-eglise .lyr-beams { mix-blend-mode: screen; opacity: var(--beam-o, 0); }
-.beam { fill: var(--gold); }
-.beam-1 { fill: #c9a96e; opacity: 0.16; }
-.beam-2 { fill: #e2c489; opacity: 0.20; }
-.beam-3 { fill: #b8607a; opacity: 0.13; }
+.ch-wood ellipse   { fill: #5b6d57; opacity: 0.5; }
+.ch-roof           { fill: url(#chRoof); }
+.ch-body           { fill: url(#chStone); }
+.ch-body-side      { fill: url(#chStoneSide); }
+.ch-dormer path    { fill: #414855; }
+.ch-dormer rect    { fill: #cfbda6; }
+.ch-dormer-glass rect { fill: #ffdc98; opacity: var(--win-lit, 0.3); }
+.ch-chimney rect   { fill: #bda891; }
+.ch-trim rect      { fill: #f7f0e4; opacity: 0.62; }
+.ch-win path       { fill: #ffdc98; opacity: var(--win-lit, 0.3); }
+.ch-mullion path   { fill: none; stroke: #8a755c; stroke-width: 2.4; opacity: 0.75; }
+.ch-pediment      { fill: #ece1cd; }
+.ch-door          { fill: #4b3626; }
+.ch-door-glass    { fill: #ffd68c; opacity: var(--win-lit, 0.3); }
+.ch-steps rect    { fill: #e0d2ba; }
+.ch-terrace       { fill: #cdbc9f; }
+.ch-lawn          { fill: url(#chLawn); }
+.ch-gravel        { fill: url(#chGravel); }
+.ch-parterre ellipse { fill: #728458; opacity: 0.5; }
+.ch-topiary ellipse  { fill: #3f5a39; }
 
 
 /* =============================================================
@@ -443,7 +322,6 @@
 .pot path { fill: #b17f57; }
 .pot-rim rect { fill: #c08d63; }
 
-/* Poussière dorée en suspension */
 .scene-orangerie .lyr-dust i {
   position: absolute;
   width: 6px;
@@ -470,130 +348,218 @@
 
 
 /* =============================================================
-   ACTE VI — La soirée
+   ACTE VI — Le vestiaire : dress code
    ============================================================= */
-.act-soiree {
-  --ink: #f3ece4;
-  --ink-soft: rgba(243, 236, 228, 0.72);
+.act-vestiaire {
+  --ink: #f7ece9;
+  --ink-soft: rgba(247, 236, 233, 0.76);
   --ink-accent: var(--gold);
 }
-.act-soiree .act-body { padding-top: 52vh; }
+.act-vestiaire .act-body { padding-top: 50vh; }
+.scene-vestiaire { transform: scale(var(--vs-s, 1)); transform-origin: 50% 40%; }
 
-.scene-soiree .lyr-stars { opacity: var(--stars-o, 0); }
-.scene-soiree .lyr-stars canvas { width: 100%; height: 100%; display: block; }
+.vs-folds rect { fill: url(#vsFold); }
+.vs-rail       { fill: var(--gold); opacity: 0.85; }
+.vs-finial circle { fill: var(--gold); }
+.vs-swag path  { fill: #7c2134; opacity: 0.5; }
 
-.scene-soiree .lyr-moon { transform: translateY(calc(var(--par-moon, 0) * 1px)); }
-.moon {
-  position: absolute;
-  top: 17%;
-  right: 9%;
-  width: clamp(52px, 7vw, 92px);
-  aspect-ratio: 1;
+/* Les deux tenues */
+.dc-looks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(20px, 5vw, 64px);
+  max-width: 780px;
+  margin: 0 auto 56px;
+}
+.dc-look { margin: 0; }
+.dc-figure {
+  display: grid;
+  place-items: center;
+  margin-bottom: 20px;
+}
+.dc-figure svg {
+  height: clamp(190px, 30svh, 300px);
+  width: auto;
+  filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.32));
+}
+.dc-skin  { fill: #f0cdb4; }
+.dc-hair  { fill: #4a3324; }
+.dc-cloth-a { fill: #f4ede3; }
+.dc-cloth-b { fill: #e7ded0; }
+.dc-cloth-c { fill: #2f3540; }
+.dc-shirt   { fill: #f8f5ef; }
+.dc-accent  { fill: var(--bordeaux); }
+.dc-shadow  { fill: rgba(0, 0, 0, 0.30); }
+.dc-shoe    { fill: #1c2029; }
+
+.dc-look h3 {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.dc-look ul { list-style: none; }
+.dc-look li {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  padding: 5px 0;
+}
+.dc-look li em {
+  font-style: normal;
+  color: #f7ece9;
+  border-bottom: 1px solid rgba(201, 169, 110, 0.7);
+}
+
+/* Nuancier */
+.dc-palette-title {
+  font-size: 0.62rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+.dc-swatches {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px 28px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.dc-swatches li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  color: var(--ink-soft);
+}
+.dc-swatches .sw {
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
-  background: radial-gradient(circle at 36% 32%, #fffaf0 0%, #f3e6cd 60%, #e2d0ae 100%);
-  box-shadow: 0 0 42px 12px rgba(255, 246, 224, 0.28);
-  opacity: var(--stars-o, 0);
+  background: var(--sw, #fff);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35), inset 0 0 0 1px rgba(255, 255, 255, 0.14);
 }
-
-.scene-soiree .lyr-chateau {
-  top: auto;
-  bottom: 0;
-  height: 58%;
-  transform: translateY(calc(var(--par-ch, 0) * 1px));
+.dc-swatches .sw-white {
+  background: #fff;
+  position: relative;
 }
-/* Assez clair pour se détacher du ciel : en #171a30 la silhouette disparaissait */
-.ch path { fill: #262d59; }
-.ch-win rect {
-  fill: var(--gold);
-  opacity: var(--win-lit, 0);
-  filter: drop-shadow(0 0 7px rgba(201, 169, 110, 0.75));
+/* Barre oblique : le blanc est le seul interdit, il doit se lire d'un coup d'œil */
+.dc-swatches .sw-white::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(45deg, transparent 44%, var(--bordeaux) 44%, var(--bordeaux) 56%, transparent 56%);
 }
-.ch-win rect:nth-child(2n)  { animation: winFlicker 5s ease-in-out infinite; }
-.ch-win rect:nth-child(3n)  { animation: winFlicker 7s ease-in-out infinite 1.4s; }
-@keyframes winFlicker {
-  0%, 100% { filter: drop-shadow(0 0 7px rgba(201, 169, 110, 0.75)); }
-  50%      { filter: drop-shadow(0 0 12px rgba(201, 169, 110, 0.95)); }
-}
-
-.scene-soiree .lyr-lights {
-  bottom: auto;
-  height: 34%;
-  transform: translateY(calc(var(--par-li, 0) * 1px));
-  opacity: var(--lights-o, 0);
-}
-.wire {
-  fill: none;
-  stroke: rgba(233, 220, 200, 0.35);
-  stroke-width: 2;
-}
-.bulb circle {
-  fill: #ffe9b8;
-  filter: drop-shadow(0 0 8px rgba(255, 224, 160, 0.9));
-  animation: bulbGlow 4s ease-in-out infinite;
-}
-.bulb circle:nth-child(2n) { animation-delay: 0.6s; }
-.bulb circle:nth-child(3n) { animation-delay: 1.3s; }
+.dc-swatches .sw-no { color: rgba(247, 236, 233, 0.55); }
 
 
 /* =============================================================
-   ACTE VII — L'album, en travelling
+   ACTE VII — Nouvelle-Zélande
    ============================================================= */
-.act-album .act-body { padding: 30vh 24px 6vh; }
-
-.album-rail-wrap {
-  position: relative;
-  height: 260vh;
+.act-nz {
+  --ink: #f0f5f2;
+  --ink-soft: rgba(240, 245, 242, 0.80);
+  /* Or pâli : le doré standard disparaît sur la brume du fjord */
+  --ink-accent: #e8d3a4;
 }
-.album-pin {
+.act-nz .act-body { padding-top: 56vh; }
+.scene-nz {
+  transform: scale(var(--nz-s, 1)) translateY(calc(var(--nz-y, 0) * 1px));
+  transform-origin: 50% 46%;
+}
+.nz-reflect path { fill: #16282e; opacity: 0.42; }
+.nz-ripple path {
+  fill: none;
+  stroke: rgba(226, 240, 236, 0.20);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.nz-fern path {
+  fill: #14251f;
+  stroke: #14251f;
+  stroke-width: 4;
+  stroke-linejoin: round;
+}
+.nz-silver path {
+  fill: none;
+  stroke: rgba(228, 238, 231, 0.55);
+  stroke-width: 3;
+  stroke-linecap: round;
+  opacity: var(--fern-o, 0);
+}
+
+
+/* =============================================================
+   ACTE VIII — L'album : une photo à la fois
+   ============================================================= */
+.act-album .act-body { padding: 26vh 24px 4vh; }
+
+.album-stack-wrap {
+  position: relative;
+  height: 360vh;
+}
+.album-stack {
   position: sticky;
   top: 0;
   height: 100vh;
   height: 100svh;
-  display: flex;
-  align-items: center;
+  display: grid;
+  place-items: center;
   overflow: hidden;
 }
-.album-rail {
-  display: flex;
-  align-items: center;
-  gap: clamp(16px, 3vw, 44px);
-  padding-inline: 12vw;
-  transform: translate3d(calc(var(--rail-x, 0) * -1px), 0, 0);
-  will-change: transform;
+.album-slide {
+  position: absolute;
+  margin: 0;
+  display: grid;
+  justify-items: center;
+  opacity: var(--o, 0);
+  transform: scale(var(--s, 1)) translateY(calc(var(--y, 0) * 1px));
+  pointer-events: none;
 }
-.album-item {
-  position: relative;
-  flex: 0 0 auto;
-  width: clamp(200px, 27vw, 340px);
+.album-slide.is-front { pointer-events: auto; }
+.album-slide img {
+  max-height: 66svh;
+  max-width: 88vw;
+  width: auto;
+  height: auto;
+  display: block;
   border-radius: 10px;
-  overflow: hidden;
-  background: var(--bordeaux-pale);
-  box-shadow: 0 18px 48px rgba(74, 15, 28, 0.22);
+  box-shadow: 0 30px 80px rgba(74, 15, 28, 0.30);
   cursor: pointer;
 }
-.album-item.wide { width: clamp(260px, 38vw, 470px); }
-.album-item img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
-  display: block;
-  transition: transform var(--d-slow) var(--e-out);
-}
-.album-item.wide img { aspect-ratio: 4 / 3; }
-.album-item:hover img { transform: scale(1.05); }
-.album-item figcaption {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 26px 16px 12px;
+.album-slide figcaption {
+  margin-top: 20px;
   font-size: 0.68rem;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: #fff;
-  text-align: left;
-  background: linear-gradient(180deg, transparent, rgba(40, 10, 18, 0.72));
+  color: var(--bordeaux-light);
+}
+
+.album-dots {
+  position: absolute;
+  bottom: 4svh;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  list-style: none;
+}
+.album-dots li {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(107, 26, 42, 0.22);
+  transition: background var(--d-fast) var(--e-out), transform var(--d-fast) var(--e-out);
+}
+.album-dots li.is-on {
+  background: var(--bordeaux);
+  transform: scale(1.45);
 }
 
 
@@ -605,27 +571,26 @@
 }
 
 @media (max-width: 720px) {
-  .act-kiosque { height: 260vh; }
-  .k-stage { width: min(102vw, 46svh * 1.25); bottom: 21%; }
-  .couple-img { height: min(44svh, 76vw); }
-  .couple-shadow { width: min(17svh, 30vw); }
-  .kiosque-title { top: 5svh; }
-  .album-item { width: clamp(180px, 62vw, 280px); }
-  .album-item.wide { width: clamp(230px, 76vw, 360px); }
-  .album-rail-wrap { height: 220vh; }
-  .act-sub { margin-top: 16vh; }
+  .act-hero { height: 260vh; }
+  .hero-title { top: 4svh; }
+  .lyr-photo img { object-position: 50% 34%; }
+
+  .dc-looks { grid-template-columns: 1fr; gap: 40px; }
+  .dc-swatches { gap: 12px 20px; }
+
+  .album-stack-wrap { height: 320vh; }
+  .album-slide img { max-height: 56svh; }
 }
 
 @media (max-width: 640px) {
   .act-envelope { height: 250vh; }
   .act-body { padding: 36vh 18px 18vh; }
-  .kiosque-countdown { bottom: 2.5svh; }
+  .hero-countdown { bottom: 2.5svh; }
 }
 
 @media (max-height: 620px) and (orientation: landscape) {
-  .couple-img { height: min(52svh, 26vw); }
-  .k-stage { width: min(60vw, 74svh * 1.25); }
-  .kiosque-title h1 { font-size: clamp(1.8rem, 5vw, 3rem); }
+  .hero-title h1 { font-size: clamp(1.8rem, 5vw, 3rem); }
+  .dc-figure svg { height: clamp(150px, 40svh, 220px); }
 }
 
 
@@ -654,47 +619,47 @@
     opacity: 0.16;
   }
   .act-bg + .act-body { margin-top: 0; }
-  .lyr, .scene, .scene-kiosque, .scene-eglise, .scene-orangerie { transform: none !important; }
+  .lyr, .scene, .scene-hero, .scene-chateau, .scene-orangerie,
+  .scene-vestiaire, .scene-nz { transform: none !important; }
 
   /* Les amorces de plan (padding-top en vh) n'ont plus de sens sans caméra :
      elles laissaient un écran de vide au-dessus de chaque titre. */
   .act-body,
   .act-route .act-body,
-  .act-eglise .act-body,
+  .act-chateau .act-body,
   .act-orangerie .act-body,
-  .act-soiree .act-body,
+  .act-vestiaire .act-body,
+  .act-nz .act-body,
   .act-album .act-body { padding: 80px 24px; }
-  .act-sub { margin-top: 80px; }
 
-  .act-eglise, .act-soiree { --ink: var(--bordeaux); --ink-soft: var(--text-light); }
+  .act-head::before { display: none; }
+  .act-chateau, .act-orangerie { --ink: var(--bordeaux); --ink-soft: var(--text-light); }
   .cagnotte-box, .venue-card { box-shadow: 0 6px 24px rgba(107, 26, 42, 0.12); }
 
-  .kiosque .k-bulbs circle,
-  .bulb circle,
-  .ch-win rect,
+  .ch-win path, .ch-door-glass, .ch-dormer-glass rect { opacity: 0.85; }
+  .nz-silver path { opacity: 0.55; }
   .env-hint .chev { animation: none; }
 
-  /* Acte II : une image fixe, titre et compte à rebours en dessous */
-  .act-kiosque { height: auto; padding: 60px 0 40px; }
-  .act-kiosque .act-bg {
+  /* Le vestiaire garde son fond sombre : le contraste du texte en dépend */
+  .act-vestiaire .act-bg, .act-nz .act-bg { opacity: 1; }
+  .act-vestiaire .act-body, .act-nz .act-body { position: relative; }
+
+  /* Acte II : la photo en bandeau, titre et compte à rebours en dessous */
+  .act-hero { height: auto; padding-bottom: 40px; }
+  .act-hero .act-bg {
     position: relative;
     height: 62svh;
     opacity: 1;
-    margin-bottom: 0;
   }
-  .scene-kiosque .lyr-couple { padding-bottom: 10%; }
-  .kiosque-title {
-    position: static;
-    transform: none;
-    opacity: 1;
-    margin: 32px auto 0;
-  }
-  .kiosque-countdown {
+  .lyr-scrim { display: none; }
+  .hero-title, .hero-countdown {
     position: static;
     transform: none;
     opacity: 1;
     margin: 28px auto 0;
+    width: auto;
   }
+  .hero-countdown { display: flex; justify-content: center; }
 
   /* Acte I : la lettre est lisible d'emblée */
   .act-envelope { height: auto; padding: 90px 24px; }
@@ -715,17 +680,26 @@
   }
   .letter > * { opacity: 1; transform: none; transition: none; }
 
-  /* Acte VII : grille au lieu du travelling */
-  .album-rail-wrap { height: auto; }
-  .album-pin { position: static; height: auto; overflow: visible; }
-  .album-rail {
+  /* Acte VIII : les photos en grille au lieu de la pile */
+  .album-stack-wrap { height: auto; }
+  .album-stack {
+    position: static;
+    height: auto;
+    overflow: visible;
     display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     align-items: start;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
     max-width: 1000px;
     margin: 0 auto;
-    padding-inline: 24px;
-    transform: none;
+    padding: 0 24px 60px;
   }
-  .album-item, .album-item.wide { width: auto; }
+  .album-slide {
+    position: static;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+  .album-slide img { max-height: none; max-width: 100%; width: 100%; }
+  .album-dots { display: none; }
 }

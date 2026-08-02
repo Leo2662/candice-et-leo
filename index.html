@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="film.css" />
-  <link rel="preload" as="image" href="images/couple.webp" imagesrcset="images/couple@sm.webp 320w, images/couple.webp 548w" imagesizes="(max-width: 720px) 46vw, 30vw" />
+  <link rel="preload" as="image" href="images/photo-neige.webp" imagesrcset="images/photo-neige@sm.webp 525w, images/photo-neige.webp 844w" imagesizes="100vw" />
 </head>
 <body>
 
@@ -75,154 +75,35 @@
 
 
   <!-- ============================================================
-       ACTE II — Le kiosque : les mariés sous la neige
+       ACTE II — Le hero : la vraie photo, sous la neige
        ============================================================ -->
-  <section id="accueil" class="act act-kiosque" data-scene="kiosque" aria-label="Candice et Léo, le 6 mars 2027">
+  <section id="accueil" class="act act-hero" data-scene="hero" aria-label="Candice et Léo, le 6 mars 2027">
     <div class="act-bg">
-      <div class="scene scene-kiosque">
-
-        <!-- Lointain : ligne d'arbres pâle -->
-        <div class="lyr lyr-far" aria-hidden="true">
-          <svg viewBox="0 0 1200 220" preserveAspectRatio="xMidYMax slice">
-            <g class="fir fir-far">
-              <path d="M40 220 L70 120 L100 220Z M70 150 L70 120 M110 220 L145 95 L180 220Z M200 220 L226 135 L252 220Z
-                       M280 220 L318 100 L356 220Z M390 220 L414 140 L438 220Z M470 220 L508 105 L546 220Z
-                       M580 220 L606 138 L632 220Z M660 220 L698 98 L736 220Z M770 220 L794 142 L818 220Z
-                       M850 220 L888 108 L926 220Z M960 220 L986 136 L1012 220Z M1050 220 L1088 102 L1126 220Z" />
-            </g>
-          </svg>
-        </div>
-
-        <!-- Plan intermédiaire : arbres nus givrés -->
-        <div class="lyr lyr-mid" aria-hidden="true">
-          <svg viewBox="0 0 1200 300" preserveAspectRatio="xMidYMax slice">
-            <g class="bare-tree">
-              <path d="M150 300 L150 160 M150 200 L118 168 M150 220 L182 190 M150 178 L128 150 M150 190 L176 160"/>
-              <path d="M1040 300 L1040 150 M1040 195 L1006 160 M1040 215 L1074 184 M1040 170 L1016 142 M1040 182 L1066 152"/>
-            </g>
-            <g class="fir fir-mid">
-              <path d="M250 300 L296 140 L342 300Z M900 300 L946 148 L992 300Z M60 300 L98 170 L136 300Z" />
-            </g>
-          </svg>
-        </div>
-
-        <!-- Le kiosque à musique -->
-        <div class="k-stage" aria-hidden="true">
-          <svg viewBox="0 0 400 320" preserveAspectRatio="xMidYMax meet" class="kiosque">
-            <!-- intérieur, vu entre les colonnes -->
-            <path class="k-inner" d="M58 132 H342 V240 H58 Z" />
-            <!-- halo de la guirlande sur le fond -->
-            <ellipse class="k-glow" cx="200" cy="176" rx="122" ry="52" />
-
-            <!-- toit en cloche, 8 pans (apex adouci : trop pointu, il faisait chapiteau) -->
-            <path class="k-roof" d="M200 42 C224 64 286 94 348 126 L52 126 C114 94 176 64 200 42 Z" />
-            <g class="k-roof-lines">
-              <path d="M200 46 L58 126 M200 46 L130 126 M200 46 L200 126 M200 46 L270 126 M200 46 L342 126"/>
-            </g>
-            <!-- fine crête de neige sur le faîte -->
-            <path class="k-snow" d="M200 44 C208 52 219 62 231 72
-                                     Q223 77 216 73 Q208 79 200 74 Q192 79 184 73 Q177 77 169 72
-                                     C181 62 192 52 200 44 Z" />
-            <!-- épi de faîtage -->
-            <g class="k-finial">
-              <path d="M200 42 L200 28" /><circle cx="200" cy="25" r="4" />
-            </g>
-
-            <!-- corniche + neige sur l'avancée de toit -->
-            <path class="k-cornice" d="M46 126 H354 V139 H46 Z" />
-            <path class="k-snow" d="M46 126 H354 V133 Q306 128 264 133 Q200 128 136 133 Q94 128 46 133 Z" />
-
-            <!-- lambrequin : bandeau + festons -->
-            <path class="k-valance" d="M56 139 H344 V149 H56 Z" />
-            <g class="k-valance">
-              <circle cx="68"  cy="149" r="6" /><circle cx="92"  cy="149" r="6" />
-              <circle cx="116" cy="149" r="6" /><circle cx="140" cy="149" r="6" />
-              <circle cx="164" cy="149" r="6" /><circle cx="188" cy="149" r="6" />
-              <circle cx="212" cy="149" r="6" /><circle cx="236" cy="149" r="6" />
-              <circle cx="260" cy="149" r="6" /><circle cx="284" cy="149" r="6" />
-              <circle cx="308" cy="149" r="6" /><circle cx="332" cy="149" r="6" />
-            </g>
-
-            <!-- guirlande lumineuse tendue sous le lambrequin -->
-            <path class="k-garland" d="M66 156 Q200 190 334 156" />
-            <g class="k-bulbs">
-              <circle cx="100" cy="168" r="3.2"/><circle cx="141" cy="177" r="3.2"/>
-              <circle cx="182" cy="182" r="3.2"/><circle cx="223" cy="182" r="3.2"/>
-              <circle cx="264" cy="176" r="3.2"/><circle cx="305" cy="166" r="3.2"/>
-            </g>
-
-            <!-- colonnes -->
-            <g class="k-col">
-              <rect x="56"  y="138" width="10" height="104" rx="2"/>
-              <rect x="122" y="138" width="9"  height="104" rx="2"/>
-              <rect x="195" y="138" width="9"  height="104" rx="2"/>
-              <rect x="268" y="138" width="9"  height="104" rx="2"/>
-              <rect x="334" y="138" width="10" height="104" rx="2"/>
-            </g>
-
-            <!-- garde-corps ajouré -->
-            <g class="k-rail">
-              <rect x="66"  y="196" width="56" height="6" rx="2"/>
-              <rect x="131" y="196" width="64" height="6" rx="2"/>
-              <rect x="204" y="196" width="64" height="6" rx="2"/>
-              <rect x="277" y="196" width="57" height="6" rx="2"/>
-              <rect x="66"  y="236" width="268" height="5" rx="2"/>
-            </g>
-            <g class="k-baluster">
-              <path d="M74 202 v34 M84 202 v34 M94 202 v34 M104 202 v34 M114 202 v34
-                       M139 202 v34 M149 202 v34 M159 202 v34 M169 202 v34 M179 202 v34 M189 202 v34
-                       M212 202 v34 M222 202 v34 M232 202 v34 M242 202 v34 M252 202 v34 M262 202 v34
-                       M285 202 v34 M295 202 v34 M305 202 v34 M315 202 v34 M325 202 v34" />
-            </g>
-            <path class="k-snow" d="M64 196 h272 v4 q-40 -3 -68 0 q-40 -3 -68 0 q-40 -3 -68 0 q-40 -3 -68 0 z" />
-
-            <!-- plancher + soubassement -->
-            <path class="k-floor" d="M44 242 H356 L348 258 H52 Z" />
-            <!-- marches -->
-            <path class="k-step" d="M150 258 H250 V270 H150 Z" />
-            <path class="k-step" d="M138 270 H262 V282 H138 Z" />
-            <path class="k-step" d="M126 282 H274 V294 H126 Z" />
-            <path class="k-snow" d="M150 258 H250 V262 Q200 259 150 262 Z M138 270 H262 V274 Q200 271 138 274 Z
-                                     M126 282 H274 V286 Q200 283 126 286 Z" />
-          </svg>
-        </div>
-
-        <!-- Les mariés -->
-        <div class="lyr lyr-couple">
+      <div class="scene scene-hero">
+        <div class="lyr lyr-photo">
           <picture>
-            <source type="image/webp" srcset="images/couple@sm.webp 320w, images/couple.webp 548w"
-                    sizes="(max-width: 720px) 46vw, 30vw" />
-            <img src="images/couple.png" alt="Candice et Léo en tenue de mariage" class="couple-img"
-                 width="548" height="1200" fetchpriority="high" />
+            <source type="image/webp" srcset="images/photo-neige@sm.webp 525w, images/photo-neige.webp 844w" sizes="100vw" />
+            <img src="images/photo-neige.jpg" alt="Candice et Léo enlacés sous la neige, devant un kiosque en bois"
+                 width="844" height="1125" fetchpriority="high" />
           </picture>
-          <div class="couple-shadow" aria-hidden="true"></div>
         </div>
-
-        <!-- Congères au premier plan -->
-        <div class="lyr lyr-drift" aria-hidden="true">
-          <svg viewBox="0 0 1200 200" preserveAspectRatio="xMidYMax slice">
-            <path class="drift-b" d="M0 96 Q150 58 320 82 Q520 110 700 74 Q900 38 1200 84 V200 H0 Z" />
-            <path class="drift-a" d="M0 140 Q200 104 400 132 Q640 166 860 126 Q1040 94 1200 130 V200 H0 Z" />
-          </svg>
-        </div>
-
+        <div class="lyr lyr-scrim" aria-hidden="true"></div>
       </div>
 
       <!-- Titre et compte à rebours restent hors du groupe mis à l'échelle :
            sinon la poussée de caméra les agrandit et les sort du cadre. -->
-      <div class="kiosque-title">
-          <p class="hero-pre">Le grand jour approche</p>
-          <h1>Candice <span class="amp">&amp;</span> Léo</h1>
-          <p class="hero-date">Le samedi 6 mars 2027</p>
-          <div class="divider" aria-hidden="true"><span></span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg><span></span></div>
-        </div>
+      <div class="hero-title">
+        <p class="hero-pre">Le grand jour approche</p>
+        <h1>Candice <span class="amp">&amp;</span> Léo</h1>
+        <p class="hero-date">Le samedi 6 mars 2027</p>
+        <div class="divider" aria-hidden="true"><span></span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg><span></span></div>
+      </div>
 
-        <!-- Compte à rebours -->
-        <div id="countdown" class="kiosque-countdown">
-          <div class="cd-block"><span id="cd-days">--</span><em>jours</em></div>
-          <div class="cd-block"><span id="cd-hours">--</span><em>heures</em></div>
-          <div class="cd-block"><span id="cd-minutes">--</span><em>minutes</em></div>
-          <div class="cd-block"><span id="cd-seconds">--</span><em>secondes</em></div>
+      <div id="countdown" class="hero-countdown">
+        <div class="cd-block"><span id="cd-days">--</span><em>jours</em></div>
+        <div class="cd-block"><span id="cd-hours">--</span><em>heures</em></div>
+        <div class="cd-block"><span id="cd-minutes">--</span><em>minutes</em></div>
+        <div class="cd-block"><span id="cd-seconds">--</span><em>secondes</em></div>
       </div>
 
     </div>
@@ -321,71 +202,144 @@
 
 
   <!-- ============================================================
-       ACTE IV — L'église : vitraux et lumière
+       ACTE IV — Le château : façade, parterre et fin de jour
        ============================================================ -->
-  <section id="lieux" class="act act-eglise" data-scene="eglise">
+  <section id="lieux" class="act act-chateau" data-scene="chateau">
     <div class="act-bg" aria-hidden="true">
-      <div class="scene scene-eglise">
-        <div class="lyr lyr-nave">
-          <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
-            <!-- bas-côtés -->
-            <path class="nave-wall" d="M0 0 H1200 V700 H0 Z" />
-            <!-- arcades -->
-            <g class="arch">
-              <path d="M120 700 V300 Q120 190 230 190 Q340 190 340 300 V700 Z" />
-              <path d="M860 700 V300 Q860 190 970 190 Q1080 190 1080 300 V700 Z" />
-            </g>
-            <!-- vitrail central -->
-            <g class="window">
-              <path class="win-frame" d="M470 620 V270 Q470 140 600 140 Q730 140 730 270 V620 Z" />
-              <g class="win-panes">
-                <path class="pane-gold" d="M500 600 V280 Q500 174 600 174 Q700 174 700 280 V600 Z" />
-                <g class="pane-grid">
-                  <rect class="pane-blue"  x="500" y="300" width="52" height="80" />
-                  <rect class="pane-ruby"  x="552" y="300" width="96" height="80" />
-                  <rect class="pane-blue"  x="648" y="300" width="52" height="80" />
-                  <rect class="pane-gold2" x="500" y="380" width="52" height="80" />
-                  <rect class="pane-blue"  x="552" y="380" width="96" height="80" />
-                  <rect class="pane-ruby"  x="648" y="380" width="52" height="80" />
-                  <rect class="pane-ruby"  x="500" y="460" width="52" height="80" />
-                  <rect class="pane-green" x="552" y="460" width="96" height="80" />
-                  <rect class="pane-blue"  x="648" y="460" width="52" height="80" />
-                  <rect class="pane-blue"  x="500" y="540" width="52" height="60" />
-                  <rect class="pane-ruby"  x="552" y="540" width="96" height="60" />
-                  <rect class="pane-gold2" x="648" y="540" width="52" height="60" />
-                </g>
-              </g>
-              <g class="win-lead">
-                <path d="M600 168 V600 M508 300 H692 M512 380 H688 M516 460 H684 M520 540 H680
-                         M552 190 V600 M648 190 V600" />
-              </g>
-            </g>
-            <!-- rosace -->
-            <g class="rose">
-              <circle class="rose-o" cx="600" cy="86" r="46" />
-              <g class="rose-glass">
-                <circle class="pane-ruby" cx="600" cy="52" r="11" />
-                <circle class="pane-blue" cx="631" cy="70" r="11" />
-                <circle class="pane-blue" cx="569" cy="70" r="11" />
-                <circle class="pane-green" cx="631" cy="103" r="11" />
-                <circle class="pane-green" cx="569" cy="103" r="11" />
-                <circle class="pane-ruby" cx="600" cy="120" r="11" />
-                <circle class="pane-gold2" cx="600" cy="86" r="13" />
-              </g>
-              <g class="rose-p">
-                <path d="M600 42 V130 M556 86 H644 M569 55 L631 117 M631 55 L569 117" />
-              </g>
-            </g>
-          </svg>
-        </div>
-        <!-- faisceaux de lumière colorée -->
-        <div class="lyr lyr-beams">
-          <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
-            <path class="beam beam-1" d="M540 200 L300 700 H520 L590 210 Z" />
-            <path class="beam beam-2" d="M600 200 L560 700 H720 L640 210 Z" />
-            <path class="beam beam-3" d="M660 205 L860 700 H1000 L700 215 Z" />
-          </svg>
-        </div>
+      <div class="scene scene-chateau">
+        <svg class="ch-svg" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMax slice">
+          <defs>
+            <linearGradient id="chSky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#9db4cc" /><stop offset="0.55" stop-color="#d8c9c2" />
+              <stop offset="1" stop-color="#f0ddc9" />
+            </linearGradient>
+            <linearGradient id="chStone" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#f3e8d7" /><stop offset="0.55" stop-color="#e0cfb8" />
+              <stop offset="1" stop-color="#c4ad93" />
+            </linearGradient>
+            <linearGradient id="chStoneSide" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#c8b096" /><stop offset="1" stop-color="#e3d3bd" />
+            </linearGradient>
+            <linearGradient id="chRoof" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#6a7180" /><stop offset="0.5" stop-color="#4d5461" />
+              <stop offset="1" stop-color="#343a45" />
+            </linearGradient>
+            <linearGradient id="chWin" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#ffe6b0" /><stop offset="1" stop-color="#e0a95a" />
+            </linearGradient>
+            <linearGradient id="chLawn" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#8b9c74" /><stop offset="1" stop-color="#5f7052" />
+            </linearGradient>
+            <linearGradient id="chGravel" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#e2d5c0" /><stop offset="1" stop-color="#cbbca4" />
+            </linearGradient>
+            <radialGradient id="chHaze" cx="0.5" cy="0.42" r="0.7">
+              <stop offset="0" stop-color="#ffe9c8" stop-opacity="0.30" />
+              <stop offset="1" stop-color="#ffe9c8" stop-opacity="0" />
+            </radialGradient>
+          </defs>
+
+          <rect x="0" y="0" width="1200" height="700" fill="url(#chSky)" />
+          <ellipse cx="600" cy="330" rx="900" ry="420" fill="url(#chHaze)" />
+
+          <!-- rideau d'arbres derrière la façade -->
+          <g class="ch-wood">
+            <ellipse cx="120" cy="430" rx="130" ry="96" /><ellipse cx="250" cy="452" rx="110" ry="78" />
+            <ellipse cx="1080" cy="430" rx="130" ry="96" /><ellipse cx="950" cy="452" rx="110" ry="78" />
+            <ellipse cx="40"  cy="462" rx="96"  ry="70" /><ellipse cx="1160" cy="462" rx="96" ry="70" />
+          </g>
+
+          <!-- pavillon gauche -->
+          <path class="ch-roof" d="M232 352 L322 236 L412 352 Z" />
+          <rect class="ch-body-side" x="248" y="352" width="148" height="192" />
+          <!-- pavillon droit -->
+          <path class="ch-roof" d="M788 352 L878 236 L968 352 Z" />
+          <rect class="ch-body-side" x="804" y="352" width="148" height="192" />
+
+          <!-- corps de logis -->
+          <path class="ch-roof" d="M382 318 L600 178 L818 318 Z" />
+          <rect class="ch-body" x="396" y="318" width="408" height="226" />
+
+          <!-- lucarnes -->
+          <g class="ch-dormer">
+            <rect x="466" y="286" width="44" height="46" rx="3" />
+            <path d="M456 288 L488 254 L520 288 Z" />
+            <rect x="578" y="268" width="44" height="50" rx="3" />
+            <path d="M568 270 L600 236 L632 270 Z" />
+            <rect x="690" y="286" width="44" height="46" rx="3" />
+            <path d="M680 288 L712 254 L744 288 Z" />
+          </g>
+          <g class="ch-dormer-glass">
+            <rect x="476" y="296" width="24" height="30" rx="12" />
+            <rect x="588" y="278" width="24" height="34" rx="12" />
+            <rect x="700" y="296" width="24" height="30" rx="12" />
+          </g>
+
+          <!-- cheminées -->
+          <g class="ch-chimney">
+            <rect x="470" y="200" width="26" height="66" /><rect x="464" y="192" width="38" height="12" rx="3" />
+            <rect x="704" y="188" width="26" height="62" /><rect x="698" y="180" width="38" height="12" rx="3" />
+            <rect x="292" y="228" width="22" height="50" /><rect x="287" y="221" width="32" height="11" rx="3" />
+            <rect x="886" y="202" width="22" height="50" /><rect x="881" y="195" width="32" height="11" rx="3" />
+          </g>
+
+          <!-- bandeaux et chaînages d'angle -->
+          <g class="ch-trim">
+            <rect x="392" y="430" width="416" height="7" />
+            <rect x="396" y="318" width="14" height="226" /><rect x="790" y="318" width="14" height="226" />
+            <rect x="248" y="352" width="12" height="192" /><rect x="384" y="352" width="12" height="192" />
+            <rect x="804" y="352" width="12" height="192" /><rect x="940" y="352" width="12" height="192" />
+          </g>
+
+          <!-- fenêtres du corps de logis : deux niveaux -->
+          <g class="ch-win">
+            <path d="M430 412 L430 363 A17 17 0 0 1 464 363 L464 412 Z" />
+            <path d="M500 412 L500 363 A17 17 0 0 1 534 363 L534 412 Z" />
+            <path d="M666 412 L666 363 A17 17 0 0 1 700 363 L700 412 Z" />
+            <path d="M736 412 L736 363 A17 17 0 0 1 770 363 L770 412 Z" />
+            <path d="M430 518 L430 469 A17 17 0 0 1 464 469 L464 518 Z" />
+            <path d="M500 518 L500 469 A17 17 0 0 1 534 469 L534 518 Z" />
+            <path d="M666 518 L666 469 A17 17 0 0 1 700 469 L700 518 Z" />
+            <path d="M736 518 L736 469 A17 17 0 0 1 770 469 L770 518 Z" />
+            <path d="M282 444 L282 401 A15 15 0 0 1 312 401 L312 444 Z" />
+            <path d="M332 444 L332 401 A15 15 0 0 1 362 401 L362 444 Z" />
+            <path d="M838 444 L838 401 A15 15 0 0 1 868 401 L868 444 Z" />
+            <path d="M888 444 L888 401 A15 15 0 0 1 918 401 L918 444 Z" />
+            <path d="M282 528 L282 485 A15 15 0 0 1 312 485 L312 528 Z" />
+            <path d="M332 528 L332 485 A15 15 0 0 1 362 485 L362 528 Z" />
+            <path d="M838 528 L838 485 A15 15 0 0 1 868 485 L868 528 Z" />
+            <path d="M888 528 L888 485 A15 15 0 0 1 918 485 L918 528 Z" />
+          </g>
+          <g class="ch-mullion">
+            <path d="M430 379 h34 M500 379 h34 M666 379 h34 M736 379 h34
+                     M447 346 v66 M517 346 v66 M683 346 v66 M753 346 v66
+                     M430 485 h34 M500 485 h34 M666 485 h34 M736 485 h34
+                     M447 452 v66 M517 452 v66 M683 452 v66 M753 452 v66" />
+          </g>
+
+          <!-- porte centrale, fronton et perron -->
+          <path class="ch-pediment" d="M550 340 L600 300 L650 340 Z" />
+          <rect class="ch-pediment" x="546" y="338" width="108" height="9" rx="2" />
+          <path class="ch-door" d="M566 544 L566 474 A34 34 0 0 1 634 474 L634 544 Z" />
+          <path class="ch-door-glass" d="M578 512 L578 480 A22 22 0 0 1 622 480 L622 512 Z" />
+          <g class="ch-steps">
+            <rect x="546" y="544" width="108" height="12" rx="2" />
+            <rect x="534" y="556" width="132" height="12" rx="2" />
+            <rect x="522" y="568" width="156" height="12" rx="2" />
+          </g>
+
+          <!-- terrasse, parterre et allée -->
+          <rect class="ch-terrace" x="180" y="544" width="840" height="36" />
+          <path class="ch-lawn" d="M0 580 H1200 V700 H0 Z" />
+          <path class="ch-gravel" d="M528 580 H672 L860 700 H340 Z" />
+          <g class="ch-parterre">
+            <ellipse cx="300" cy="640" rx="128" ry="42" /><ellipse cx="900" cy="640" rx="128" ry="42" />
+          </g>
+          <g class="ch-topiary">
+            <ellipse cx="500" cy="596" rx="17" ry="22" /><ellipse cx="700" cy="596" rx="17" ry="22" />
+            <ellipse cx="416" cy="618" rx="20" ry="26" /><ellipse cx="784" cy="618" rx="20" ry="26" />
+          </g>
+        </svg>
       </div>
     </div>
 
@@ -568,90 +522,223 @@
 
       </div>
 
-      <!-- Dress code, second temps de l'acte -->
-      <div id="dresscode" class="act-sub">
-        <header class="act-head" data-reveal="up">
-          <h2>Dress code</h2>
-          <div class="divider small" aria-hidden="true"><span></span></div>
-          <p class="section-intro">Pour partager notre journée dans la plus belle élégance :</p>
-        </header>
-
-        <div class="dresscode-grid" data-reveal-group>
-          <div class="dresscode-card" data-reveal="up">
-            <div class="dc-icon">♀</div>
-            <h3>Mesdames</h3>
-            <ul>
-              <li>Tenue élégante de rigueur</li>
-              <li>Une touche de bordeaux est la bienvenue</li>
-              <li><strong>Merci d'éviter le blanc</strong></li>
-            </ul>
-          </div>
-          <div class="dresscode-card featured" data-reveal="up">
-            <div class="dc-icon">♂</div>
-            <h3>Messieurs</h3>
-            <ul>
-              <li>Costume de rigueur</li>
-              <li><strong>Cravate obligatoire</strong></li>
-              <li>Une touche de bordeaux est la bienvenue</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="palette" data-reveal="up">
-          <span class="swatch bordeaux" title="Bordeaux"></span>
-          <p>La couleur bordeaux est à l'honneur</p>
-        </div>
-      </div>
     </div>
   </section>
 
 
   <!-- ============================================================
-       ACTE VI — La soirée : nuit étoilée sur le château
+       ACTE VI — Le vestiaire : dress code
        ============================================================ -->
-  <section id="cagnotte" class="act act-soiree" data-scene="soiree">
+  <section id="dresscode" class="act act-vestiaire" data-scene="vestiaire">
     <div class="act-bg" aria-hidden="true">
-      <div class="scene scene-soiree">
-        <div class="lyr lyr-stars"><canvas id="film-stars"></canvas></div>
-        <div class="lyr lyr-moon"><div class="moon"></div></div>
-        <div class="lyr lyr-chateau">
-          <svg viewBox="0 0 1200 420" preserveAspectRatio="xMidYMax slice">
-            <g class="ch">
-              <path d="M250 420 V214 H420 V420 Z" />
-              <path d="M420 420 V158 H780 V420 Z" />
-              <path d="M780 420 V214 H950 V420 Z" />
-              <path d="M235 214 L335 138 L435 214 Z" />
-              <path d="M405 158 L600 56 L795 158 Z" />
-              <path d="M765 214 L865 138 L965 214 Z" />
-              <path d="M600 56 V22 M592 30 h16" />
-            </g>
-            <g class="ch-win">
-              <rect x="288" y="252" width="22" height="34" rx="10"/><rect x="360" y="252" width="22" height="34" rx="10"/>
-              <rect x="470" y="206" width="24" height="38" rx="11"/><rect x="556" y="206" width="24" height="38" rx="11"/>
-              <rect x="642" y="206" width="24" height="38" rx="11"/><rect x="716" y="206" width="24" height="38" rx="11"/>
-              <rect x="470" y="300" width="24" height="38" rx="11"/><rect x="556" y="300" width="24" height="38" rx="11"/>
-              <rect x="642" y="300" width="24" height="38" rx="11"/><rect x="716" y="300" width="24" height="38" rx="11"/>
-              <rect x="818" y="252" width="22" height="34" rx="10"/><rect x="890" y="252" width="22" height="34" rx="10"/>
-            </g>
-          </svg>
-        </div>
-        <div class="lyr lyr-lights">
-          <svg viewBox="0 0 1200 200" preserveAspectRatio="xMidYMin slice">
-            <path class="wire" d="M-20 30 Q160 108 340 44 Q520 -16 700 52 Q880 116 1060 40 Q1150 8 1220 34" />
-            <g class="bulb">
-              <circle cx="80" cy="72" r="5"/><circle cx="180" cy="94" r="5"/><circle cx="272" cy="80" r="5"/>
-              <circle cx="380" cy="40" r="5"/><circle cx="470" cy="20" r="5"/><circle cx="570" cy="16" r="5"/>
-              <circle cx="660" cy="42" r="5"/><circle cx="760" cy="76" r="5"/><circle cx="860" cy="94" r="5"/>
-              <circle cx="960" cy="74" r="5"/><circle cx="1060" cy="42" r="5"/><circle cx="1150" cy="24" r="5"/>
-            </g>
-          </svg>
-        </div>
+      <div class="scene scene-vestiaire">
+        <svg class="vs-svg" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="vsWall" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#5d1626" /><stop offset="0.6" stop-color="#4a0f1c" />
+              <stop offset="1" stop-color="#330a14" />
+            </linearGradient>
+            <linearGradient id="vsFold" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#ffffff" stop-opacity="0" />
+              <stop offset="0.5" stop-color="#ffffff" stop-opacity="0.09" />
+              <stop offset="1" stop-color="#ffffff" stop-opacity="0" />
+            </linearGradient>
+            <radialGradient id="vsSpot" cx="0.5" cy="0.3" r="0.62">
+              <stop offset="0" stop-color="#ffdfa8" stop-opacity="0.30" />
+              <stop offset="1" stop-color="#ffdfa8" stop-opacity="0" />
+            </radialGradient>
+          </defs>
+
+          <rect x="0" y="0" width="1200" height="700" fill="url(#vsWall)" />
+          <!-- plis du velours -->
+          <g class="vs-folds">
+            <rect x="30"   y="0" width="86" height="700" /><rect x="196" y="0" width="70" height="700" />
+            <rect x="352"  y="0" width="94" height="700" /><rect x="536" y="0" width="72" height="700" />
+            <rect x="700"  y="0" width="92" height="700" /><rect x="880" y="0" width="70" height="700" />
+            <rect x="1040" y="0" width="88" height="700" />
+          </g>
+          <rect x="0" y="0" width="1200" height="700" fill="url(#vsSpot)" />
+
+          <!-- tringle dorée et embrasse -->
+          <rect class="vs-rail" x="0" y="96" width="1200" height="7" rx="3" />
+          <g class="vs-finial"><circle cx="46" cy="99" r="15" /><circle cx="1154" cy="99" r="15" /></g>
+          <g class="vs-swag">
+            <path d="M0 103 Q300 214 600 128 Q900 42 1200 118 L1200 103 Q900 27 600 113 Q300 199 0 88 Z" />
+          </g>
+          <!-- galon du bas -->
+          <rect class="vs-rail" x="0" y="654" width="1200" height="5" />
+        </svg>
       </div>
     </div>
 
     <div class="act-body">
       <header class="act-head" data-reveal="up">
         <p class="act-num">Acte VI</p>
+        <h2>Dress code</h2>
+        <div class="divider small" aria-hidden="true"><span></span></div>
+        <p class="section-intro">Une seule consigne&nbsp;: l'élégance, avec une touche de bordeaux.</p>
+      </header>
+
+      <div class="dc-looks" data-reveal-group>
+
+        <figure class="dc-look" data-reveal="up">
+          <div class="dc-figure">
+            <svg viewBox="0 0 200 340" aria-hidden="true">
+              <path class="dc-hair" d="M76 46 Q66 88 72 116 Q84 84 82 50 Z M124 46 Q134 88 128 116 Q116 84 118 50 Z" />
+              <path class="dc-skin" d="M78 90 Q64 134 66 180 L78 178 Q76 132 86 96 Z" />
+              <path class="dc-skin" d="M122 90 Q136 134 134 180 L122 178 Q124 132 114 96 Z" />
+              <rect class="dc-skin" x="93" y="60" width="14" height="18" rx="6" />
+              <path class="dc-cloth-a" d="M100 74 L124 88 Q128 120 126 152 L140 302 H60 L74 152 Q72 120 76 88 Z" />
+              <path class="dc-cloth-b" d="M100 74 L124 88 Q126 114 125 136 H75 Q74 114 76 88 Z" />
+              <path class="dc-accent" d="M82 82 Q100 96 118 82 L122 95 Q100 111 78 95 Z" />
+              <path class="dc-accent" d="M118 88 L127 93 L134 196 L123 196 Z" />
+              <circle class="dc-skin" cx="100" cy="44" r="20" />
+              <path class="dc-hair" d="M78 46 Q74 18 100 18 Q126 18 122 46 Q118 32 100 32 Q82 32 78 46 Z" />
+              <path class="dc-cloth-b" d="M76 302 h22 l3 14 H73 Z M102 302 h22 l3 14 h-28 Z" />
+              <ellipse class="dc-shadow" cx="100" cy="322" rx="54" ry="8" />
+            </svg>
+          </div>
+          <figcaption>
+            <h3>Mesdames</h3>
+            <ul>
+              <li>Robe longue, midi ou tailleur habillé</li>
+              <li>Une touche de <em>bordeaux</em> : étole, ceinture, souliers</li>
+            </ul>
+          </figcaption>
+        </figure>
+
+        <figure class="dc-look" data-reveal="up">
+          <div class="dc-figure">
+            <svg viewBox="0 0 200 340" aria-hidden="true">
+              <path class="dc-skin" d="M72 92 Q58 138 60 184 L72 182 Q70 136 80 98 Z" />
+              <path class="dc-skin" d="M128 92 Q142 138 140 184 L128 182 Q130 136 120 98 Z" />
+              <rect class="dc-skin" x="93" y="60" width="14" height="18" rx="6" />
+              <path class="dc-shirt" d="M86 78 L100 88 L114 78 L120 104 H80 Z" />
+              <path class="dc-accent" d="M100 88 L108 97 L105 148 L100 155 L95 148 L92 97 Z" />
+              <path class="dc-cloth-c" d="M100 80 L70 92 Q58 132 60 182 L66 214 H94 L97 150 L88 100 Z" />
+              <path class="dc-cloth-c" d="M100 80 L130 92 Q142 132 140 182 L134 214 H106 L103 150 L112 100 Z" />
+              <path class="dc-cloth-c" d="M66 212 H134 L138 302 H108 L100 224 L92 302 H62 Z" />
+              <circle class="dc-skin" cx="100" cy="44" r="20" />
+              <path class="dc-hair" d="M79 46 Q79 18 100 18 Q121 18 121 46 Q113 30 100 30 Q87 30 79 46 Z" />
+              <path class="dc-shoe" d="M58 302 h34 l4 14 H54 Z M108 302 h34 l4 14 h-38 Z" />
+              <ellipse class="dc-shadow" cx="100" cy="322" rx="54" ry="8" />
+            </svg>
+          </div>
+          <figcaption>
+            <h3>Messieurs</h3>
+            <ul>
+              <li>Costume sombre, chemise claire</li>
+              <li><em>Cravate obligatoire</em> — bordeaux appréciée</li>
+            </ul>
+          </figcaption>
+        </figure>
+
+      </div>
+
+      <div class="dc-palette" data-reveal="up">
+        <p class="dc-palette-title">La palette</p>
+        <ul class="dc-swatches">
+          <li><span class="sw" style="--sw:#6b1a2a"></span>Bordeaux</li>
+          <li><span class="sw" style="--sw:#4a0f1c"></span>Prune</li>
+          <li><span class="sw" style="--sw:#c9a96e"></span>Or</li>
+          <li><span class="sw" style="--sw:#2f3540"></span>Anthracite</li>
+          <li class="sw-no"><span class="sw sw-white"></span>Blanc — réservé à la mariée</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       ACTE VII — Nouvelle-Zélande : le fjord du voyage de noces
+       ============================================================ -->
+  <section id="cagnotte" class="act act-nz" data-scene="nz">
+    <div class="act-bg" aria-hidden="true">
+      <div class="scene scene-nz">
+        <svg class="nz-svg" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="nzSky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#7d9bb0" /><stop offset="0.45" stop-color="#b9cbd2" />
+              <stop offset="1" stop-color="#e2e8e2" />
+            </linearGradient>
+            <linearGradient id="nzFar" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#8ea7b4" /><stop offset="1" stop-color="#aebfc4" />
+            </linearGradient>
+            <linearGradient id="nzMid" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#4f6f70" /><stop offset="1" stop-color="#6d8a84" />
+            </linearGradient>
+            <linearGradient id="nzNear" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#243f3a" /><stop offset="1" stop-color="#3c5a4c" />
+            </linearGradient>
+            <linearGradient id="nzWater" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#3f6367" /><stop offset="0.5" stop-color="#2c4a50" />
+              <stop offset="1" stop-color="#1d3339" />
+            </linearGradient>
+            <linearGradient id="nzMist" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#ffffff" stop-opacity="0" />
+              <stop offset="0.5" stop-color="#ffffff" stop-opacity="0.42" />
+              <stop offset="1" stop-color="#ffffff" stop-opacity="0" />
+            </linearGradient>
+          </defs>
+
+          <rect x="0" y="0" width="1200" height="700" fill="url(#nzSky)" />
+
+          <!-- crêtes lointaines -->
+          <path fill="url(#nzFar)" d="M0 366 L118 246 L214 318 L318 196 L432 330 L540 264 L636 350
+                                      L742 236 L860 340 L962 268 L1076 348 L1200 274 V440 H0 Z" />
+          <!-- pics intermédiaires -->
+          <path fill="url(#nzMid)" d="M0 440 L96 300 L196 396 L306 244 L424 402 L512 330 L602 424
+                                      L714 286 L828 408 L930 332 L1046 428 L1200 320 V470 H0 Z" />
+          <!-- brume sur l'eau -->
+          <rect x="0" y="382" width="1200" height="96" fill="url(#nzMist)" />
+
+          <!-- parois proches, à contre-jour -->
+          <path fill="url(#nzNear)" d="M0 470 V150 L104 268 L188 208 L286 372 L352 316 L410 470 Z" />
+          <path fill="url(#nzNear)" d="M1200 470 V132 L1084 262 L1000 196 L906 380 L842 320 L790 470 Z" />
+
+          <!-- le fjord -->
+          <rect x="0" y="470" width="1200" height="230" fill="url(#nzWater)" />
+          <g class="nz-reflect">
+            <path d="M410 470 L352 700 H206 L120 470 Z" />
+            <path d="M790 470 L842 700 H986 L1072 470 Z" />
+          </g>
+          <g class="nz-ripple">
+            <path d="M120 512 h180 M420 528 h140 M660 512 h170 M300 556 h220 M700 566 h190
+                     M180 600 h150 M560 610 h230 M380 648 h190 M820 640 h160" />
+          </g>
+
+          <!-- fougères arborescentes au premier plan -->
+          <g class="nz-fern">
+            <path d="M96 700 V560 Z" />
+            <path d="M96 566 Q52 552 10 508 Q56 528 100 578 Z" />
+            <path d="M96 566 Q140 552 182 508 Q136 528 92 578 Z" />
+            <path d="M96 596 Q56 588 18 556 Q60 570 100 606 Z" />
+            <path d="M96 596 Q136 588 174 556 Q132 570 92 606 Z" />
+            <path d="M96 628 Q62 624 32 600 Q66 614 100 636 Z" />
+            <path d="M96 628 Q130 624 160 600 Q126 614 92 636 Z" />
+            <path d="M1108 700 V580 Z" />
+            <path d="M1108 586 Q1066 572 1026 530 Q1070 550 1112 598 Z" />
+            <path d="M1108 586 Q1150 572 1190 530 Q1146 550 1104 598 Z" />
+            <path d="M1108 614 Q1070 606 1034 576 Q1074 590 1112 624 Z" />
+            <path d="M1108 614 Q1146 606 1182 576 Q1142 590 1104 624 Z" />
+          </g>
+
+          <!-- fougère argentée, emblème du pays, en filigrane -->
+          <g class="nz-silver">
+            <path d="M214 660 V520" />
+            <path d="M214 530 Q186 524 168 502 M214 530 Q242 524 260 502
+                     M214 556 Q182 550 162 526 M214 556 Q246 550 266 526
+                     M214 582 Q178 578 156 556 M214 582 Q250 578 272 556
+                     M214 608 Q182 606 162 588 M214 608 Q246 606 266 588
+                     M214 634 Q188 634 172 622 M214 634 Q240 634 256 622" />
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <div class="act-body">
+      <header class="act-head" data-reveal="up">
+        <p class="act-num">Acte VII</p>
         <h2>Liste de mariage</h2>
         <div class="divider small" aria-hidden="true"><span></span></div>
         <p class="section-intro">
@@ -674,57 +761,62 @@
 
 
   <!-- ============================================================
-       ACTE VII — L'album : travelling sur nos souvenirs
+       ACTE VIII — L'album : une photo à la fois, au fil du défilement
        ============================================================ -->
   <section id="album" class="act act-album" data-scene="album">
     <div class="act-body">
       <header class="act-head" data-reveal="up">
-        <p class="act-num">Acte VII</p>
+        <p class="act-num">Acte VIII</p>
         <h2>Notre album</h2>
         <div class="divider small" aria-hidden="true"><span></span></div>
         <p class="section-intro">Quelques instants partagés, avant le plus beau.</p>
       </header>
     </div>
 
-    <div class="album-rail-wrap">
-      <div class="album-pin">
-      <div class="album-rail">
-        <figure class="album-item">
+    <div class="album-stack-wrap">
+      <div class="album-stack">
+        <figure class="album-slide" data-slide="0">
           <picture>
-            <source type="image/webp" srcset="images/photo-plage@sm.webp 525w, images/photo-plage.webp 1050w" sizes="(max-width: 720px) 70vw, 34vw" />
+            <source type="image/webp" srcset="images/photo-plage@sm.webp 525w, images/photo-plage.webp 1050w" sizes="(max-width: 720px) 88vw, 52vh" />
             <img src="images/photo-plage.jpg" alt="Candice et Léo à la plage" loading="lazy" width="1050" height="1400" />
           </picture>
           <figcaption>La plage</figcaption>
         </figure>
-        <figure class="album-item">
+        <figure class="album-slide" data-slide="1">
           <picture>
-            <source type="image/webp" srcset="images/photo-cadix@sm.webp 525w, images/photo-cadix.webp 1050w" sizes="(max-width: 720px) 70vw, 34vw" />
+            <source type="image/webp" srcset="images/photo-cadix@sm.webp 525w, images/photo-cadix.webp 1050w" sizes="(max-width: 720px) 88vw, 52vh" />
             <img src="images/photo-cadix.jpg" alt="Candice et Léo à Cadix" loading="lazy" width="1050" height="1400" />
           </picture>
           <figcaption>Cadix</figcaption>
         </figure>
-        <figure class="album-item wide">
+        <figure class="album-slide" data-slide="2">
           <picture>
-            <source type="image/webp" srcset="images/photo-munich@sm.webp 700w, images/photo-munich.webp 1125w" sizes="(max-width: 720px) 70vw, 42vw" />
+            <source type="image/webp" srcset="images/photo-munich@sm.webp 700w, images/photo-munich.webp 1125w" sizes="(max-width: 720px) 88vw, 90vh" />
             <img src="images/photo-munich.jpg" alt="Candice et Léo à Munich" loading="lazy" width="1125" height="844" />
           </picture>
           <figcaption>Munich</figcaption>
         </figure>
-        <figure class="album-item">
+        <figure class="album-slide" data-slide="3">
           <picture>
-            <source type="image/webp" srcset="images/photo-neige@sm.webp 525w, images/photo-neige.webp 844w" sizes="(max-width: 720px) 70vw, 34vw" />
+            <source type="image/webp" srcset="images/photo-neige@sm.webp 525w, images/photo-neige.webp 844w" sizes="(max-width: 720px) 88vw, 52vh" />
             <img src="images/photo-neige.jpg" alt="Candice et Léo sous la neige" loading="lazy" width="844" height="1125" />
           </picture>
           <figcaption>Sous la neige</figcaption>
         </figure>
-        <figure class="album-item">
+        <figure class="album-slide" data-slide="4">
           <picture>
-            <source type="image/webp" srcset="images/photo-rome@sm.webp 525w, images/photo-rome.webp 1050w" sizes="(max-width: 720px) 70vw, 34vw" />
+            <source type="image/webp" srcset="images/photo-rome@sm.webp 525w, images/photo-rome.webp 1050w" sizes="(max-width: 720px) 88vw, 52vh" />
             <img src="images/photo-rome.jpg" alt="Candice et Léo à Rome" loading="lazy" width="1050" height="1400" />
           </picture>
           <figcaption>Rome</figcaption>
         </figure>
-      </div>
+        <ol class="album-dots" aria-hidden="true">
+        <li data-dot="0"></li>
+        <li data-dot="1"></li>
+        <li data-dot="2"></li>
+        <li data-dot="3"></li>
+        <li data-dot="4"></li>
+        </ol>
       </div>
     </div>
   </section>

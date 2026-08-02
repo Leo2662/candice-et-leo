@@ -80,11 +80,12 @@
   /* ---------- Ambiances : le ciel traverse la journée ---------- */
   var MOODS = {
     envelope:  { top: '#fdf8f4', mid: '#f8eeea', bot: '#f0e2e3', vig: 0.00, snow: 0.45 },
-    kiosque:   { top: '#b3cfe8', mid: '#dcebf4', bot: '#f7f3ef', vig: 0.00, snow: 1.00 },
+    hero:      { top: '#b3cfe8', mid: '#dcebf4', bot: '#f7f3ef', vig: 0.00, snow: 0.45 },
     route:     { top: '#a6c7e4', mid: '#d3e5f2', bot: '#f3f7f9', vig: 0.00, snow: 0.70 },
-    eglise:    { top: '#241d2b', mid: '#2b2430', bot: '#191420', vig: 0.55, snow: 0.00 },
+    chateau:   { top: '#9db4cc', mid: '#d8c9c2', bot: '#f0ddc9', vig: 0.06, snow: 0.00 },
     orangerie: { top: '#f2dab4', mid: '#f8e9d0', bot: '#eee0cc', vig: 0.04, snow: 0.00 },
-    soiree:    { top: '#0c1230', mid: '#151b3c', bot: '#241f48', vig: 0.62, snow: 0.00 },
+    vestiaire: { top: '#4a0f1c', mid: '#3a0b16', bot: '#22060d', vig: 0.42, snow: 0.00 },
+    nz:        { top: '#7d9bb0', mid: '#b9cbd2', bot: '#e2e8e2', vig: 0.18, snow: 0.00 },
     album:     { top: '#fdf8f4', mid: '#f9f1ee', bot: '#f4ebe9', vig: 0.00, snow: 0.00 }
   };
 
@@ -147,19 +148,14 @@
     set(el, '--act1-fade', (1 - seg(p, 0.94, 1)).toFixed(3));
   });
 
-  /* Acte II — le kiosque sous la neige */
-  scene('.act-kiosque', function (p, el) {
+  /* Acte II — le hero : poussée de caméra sur la photo */
+  scene('.act-hero', function (p, el) {
     var intro = easeOut(seg(p, 0.00, 0.16));
     var out = seg(p, 0.90, 1);
 
-    set(el, '--push', (1 + easeInOut(seg(p, 0.12, 0.88)) * 0.22).toFixed(4));
-    set(el, '--par-far', (-26 * p).toFixed(1));
-    set(el, '--par-mid', (-48 * p).toFixed(1));
-    set(el, '--par-kio', (-74 * p).toFixed(1));
-    set(el, '--par-cpl', (-104 * p).toFixed(1));
-    set(el, '--par-drift', (46 * p).toFixed(1));
+    set(el, '--push', (1.04 + easeInOut(seg(p, 0.10, 0.90)) * 0.20).toFixed(4));
 
-    var titleOut = easeInOut(seg(p, 0.32, 0.56));
+    var titleOut = easeInOut(seg(p, 0.34, 0.58));
     set(el, '--title-o', (intro * (1 - titleOut)).toFixed(3));
     set(el, '--title-y', (24 * (1 - intro) - 46 * titleOut).toFixed(1));
 
@@ -173,7 +169,6 @@
   /* Acte III — la route vers l'église */
   scene('.act-route', function (p, el) {
     set(el, '--par-hills', (-34 * p).toFixed(1));
-    set(el, '--par-road', (54 * p).toFixed(1));
     set(el, '--par-poles', (140 * p).toFixed(1));
 
     /* L'église grandit depuis l'horizon : l'échelle part de la base, fixée au sol */
@@ -183,11 +178,10 @@
     set(el, '--spire-y', (8 - approach * 14).toFixed(1));
   });
 
-  /* Acte IV — l'église, les vitraux s'allument */
-  scene('.act-eglise', function (p, el) {
-    set(el, '--nave-s', (1.16 - easeInOut(p) * 0.16).toFixed(4));
-    set(el, '--win-o', (0.26 + easeOut(seg(p, 0.08, 0.55)) * 0.74).toFixed(3));
-    set(el, '--beam-o', (easeOut(seg(p, 0.16, 0.58)) * (1 - seg(p, 0.86, 1))).toFixed(3));
+  /* Acte IV — le château, les fenêtres s'allument à la tombée du jour */
+  scene('.act-chateau', function (p, el) {
+    set(el, '--ch-s', (1.00 + easeInOut(p) * 0.12).toFixed(4));
+    set(el, '--win-lit', (0.16 + easeOut(seg(p, 0.10, 0.62)) * 0.84).toFixed(3));
   });
 
   /* Acte V — l'orangerie */
@@ -197,22 +191,38 @@
     set(el, '--par-plants', (64 * p).toFixed(1));
   });
 
-  /* Acte VI — la soirée */
-  scene('.act-soiree', function (p, el) {
-    set(el, '--stars-o', easeOut(seg(p, 0.03, 0.32)).toFixed(3));
-    set(el, '--win-lit', easeOut(seg(p, 0.06, 0.40)).toFixed(3));
-    set(el, '--lights-o', easeOut(seg(p, 0.08, 0.40)).toFixed(3));
-    set(el, '--par-ch', (-36 * p).toFixed(1));
-    set(el, '--par-moon', (-64 * p).toFixed(1));
-    set(el, '--par-li', (54 * p).toFixed(1));
+  /* Acte VI — le vestiaire */
+  scene('.act-vestiaire', function (p, el) {
+    set(el, '--vs-s', (1.02 + easeInOut(p) * 0.10).toFixed(4));
   });
 
-  /* Acte VII — travelling horizontal sur l'album */
-  var rail = document.querySelector('.album-rail');
-  scene('.album-rail-wrap', function (p, el) {
-    if (!rail) return;
-    var max = Math.max(0, rail.scrollWidth - window.innerWidth);
-    set(el, '--rail-x', (max * p).toFixed(1));
+  /* Acte VII — le fjord néo-zélandais */
+  scene('.act-nz', function (p, el) {
+    set(el, '--nz-s', (1.06 + easeInOut(p) * 0.12).toFixed(4));
+    set(el, '--nz-y', (26 - p * 52).toFixed(1));
+    set(el, '--fern-o', easeOut(seg(p, 0.10, 0.46)).toFixed(3));
+  });
+
+  /* Acte VIII — l'album : une photo à la fois, en fondu enchaîné */
+  var slides = document.querySelectorAll('.album-slide');
+  var dots = document.querySelectorAll('.album-dots li');
+  scene('.album-stack-wrap', function (p, el) {
+    if (!slides.length) return;
+    /* f parcourt [0, n-1] : chaque photo est pleine en f = son index.
+       Palier large puis bascule courte — un fondu linéaire laisserait deux
+       photos superposées pendant presque tout le défilement. */
+    var f = p * (slides.length - 1);
+    var near = Math.round(f);
+    for (var i = 0; i < slides.length; i++) {
+      var d = Math.abs(f - i);
+      var o = clamp01((0.58 - d) / 0.16);
+      var s = slides[i];
+      set(s, '--o', o.toFixed(3));
+      set(s, '--s', (1 + (1 - o) * 0.06).toFixed(4));
+      set(s, '--y', ((f - i) * 26).toFixed(1));
+      s.classList.toggle('is-front', i === near);
+      if (dots[i]) dots[i].classList.toggle('is-on', i === near);
+    }
   });
 
   /* ---------- Boucle ---------- */
