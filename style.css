@@ -569,7 +569,7 @@ footer p:first-child {
   height: 26px;
   z-index: 0;
   border-radius: 50%;
-  background: radial-gradient(ellipse at center, rgba(74, 15, 28, 0.30), rgba(74, 15, 28, 0) 70%);
+  background: radial-gradient(ellipse at center, rgba(60, 48, 66, 0.32), rgba(60, 48, 66, 0) 70%);
   filter: blur(5px);
   opacity: calc(1 - var(--settle));
 }
@@ -590,8 +590,8 @@ footer p:first-child {
   inset: 0;
   z-index: 1;
   border-radius: 5px;
-  background: linear-gradient(170deg, #e3cfd4 0%, #d3b6be 100%);
-  box-shadow: inset 0 3px 16px rgba(74, 15, 28, 0.28);
+  background: linear-gradient(170deg, #e9e8ec 0%, #d6d5dd 100%);
+  box-shadow: inset 0 3px 16px rgba(60, 48, 66, 0.26);
   opacity: calc(1 - var(--settle));
 }
 
@@ -600,8 +600,8 @@ footer p:first-child {
   inset: 0;
   z-index: 3;
   clip-path: polygon(0 0, 50% 54%, 100% 0, 100% 100%, 0 100%);
-  background: linear-gradient(165deg, #fdf6f2 0%, #f1d9de 52%, #e2c4cc 100%);
-  filter: drop-shadow(0 -2px 6px rgba(74, 15, 28, 0.26));
+  background: linear-gradient(165deg, #ffffff 0%, #f7f6f9 52%, #e9e8ee 100%);
+  filter: drop-shadow(0 -2px 6px rgba(60, 48, 66, 0.22));
   opacity: calc(1 - var(--settle));
 }
 .env-front::after {
@@ -609,8 +609,8 @@ footer p:first-child {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(107, 26, 42, 0.10) 0%, rgba(107, 26, 42, 0) 32%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0) 70%, rgba(107, 26, 42, 0.05) 100%);
+    linear-gradient(180deg, rgba(60, 48, 66, 0.09) 0%, rgba(60, 48, 66, 0) 32%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0) 70%, rgba(60, 48, 66, 0.05) 100%);
 }
 
 .env-flap {
@@ -629,15 +629,15 @@ footer p:first-child {
 .flap-face { position: absolute; inset: 0; backface-visibility: hidden; }
 .flap-out {
   clip-path: polygon(0 0, 100% 0, 50% 100%);
-  background: linear-gradient(180deg, #fffbf8 0%, #f4e1e5 60%, #ead0d6 100%);
-  filter: drop-shadow(0 4px 8px rgba(74, 15, 28, 0.26));
+  background: linear-gradient(180deg, #ffffff 0%, #f6f5f8 60%, #eceaf1 100%);
+  filter: drop-shadow(0 4px 8px rgba(60, 48, 66, 0.24));
 }
 .flap-in {
   clip-path: polygon(0 100%, 100% 100%, 50% 0);
   transform: rotateX(180deg);
   background:
-    repeating-linear-gradient(-45deg, rgba(107, 26, 42, 0.05) 0 5px, rgba(107, 26, 42, 0) 5px 11px),
-    linear-gradient(0deg, #ecdade 0%, #dbbfc7 100%);
+    repeating-linear-gradient(-45deg, rgba(60, 48, 66, 0.05) 0 5px, rgba(60, 48, 66, 0) 5px 11px),
+    linear-gradient(0deg, #f0eff4 0%, #dedde5 100%);
 }
 
 .seal {

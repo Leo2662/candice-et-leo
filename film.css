@@ -129,9 +129,10 @@
 /* =============================================================
    ACTE I — L'invitation
    ============================================================= */
+/* Fond assombri par rapport au blanc de l'enveloppe, sinon elle s'y noie */
 .act-envelope {
   height: 280vh;
-  background: radial-gradient(ellipse at 50% 40%, #fffdfc 0%, #faf1f0 42%, #ecdce0 100%);
+  background: radial-gradient(ellipse at 50% 40%, #fdf5f3 0%, #f4e5e5 42%, #e2cbd1 100%);
   opacity: var(--act1-fade, 1);
 }
 
